@@ -9,9 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CheapEatsUoA">
-        <activity android:name=".OffCampusActivity"></activity>
-        <activity android:name=".GraftonActivity" />
-        <activity android:name=".CityActivity" />
+        <activity android:name=".OffCampusActivity">
+            android:label = "Off Campus Activity"
+            android:theme = "@style/Theme.CheapEatsUoA.OffCampusActivity"
+        </activity>
+        <activity android:name=".GraftonActivity" >
+            android:label = "Grafton Activity"
+            android:theme = "@style/Theme.CheapEatsUoA.GraftonActivity"
+        </activity>
+        <activity android:name=".CityActivity" >
+        android:label = "City Activity"
+        android:theme = "@style/Theme.CheapEatsUoA.CityActivity" </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
