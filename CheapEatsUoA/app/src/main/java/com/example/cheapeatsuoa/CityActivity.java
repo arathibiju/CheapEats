@@ -31,8 +31,8 @@ public class CityActivity extends AppCompatActivity {
         vh = new ViewHolder();
 
         Map<Integer, String>  wordsDict = DataProvider.generateCityStoreNames();
-        List<String> stores = new ArrayList<String>( wordsDict.values());
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
+        List<String> stores = new ArrayList<>( wordsDict.values());
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 stores);
             ListView listView = (ListView) findViewById(R.id.list_view_city);

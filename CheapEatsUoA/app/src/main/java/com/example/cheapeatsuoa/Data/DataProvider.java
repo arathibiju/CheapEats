@@ -8,7 +8,7 @@ public class DataProvider {
 
     public static Map<Integer, String> generateCityStoreNames() {
         Map<Integer, String> words =
-                new LinkedHashMap<Integer, String>();
+                new LinkedHashMap<>();
         words.put(1, "Mojo");
         words.put(2, "Shaky Isles Coffee Co.");
         words.put(3, "Needo Pasta");
@@ -25,7 +25,7 @@ public class DataProvider {
     }
     public static Map<Integer, String> generateGraftonStoreNames() {
         Map<Integer, String> words =
-                new LinkedHashMap<Integer, String>();
+                new LinkedHashMap<>();
         words.put(1, "Superfino");
         words.put(2, "Domain Deli");
         words.put(3, "Anastasis Coffee Roasters");
@@ -42,7 +42,7 @@ public class DataProvider {
 
     public static Map<Integer, String> generateOffCampusStoreNames() {
         Map<Integer, String> words =
-                new LinkedHashMap<Integer, String>();
+                new LinkedHashMap<>();
         words.put(1, "Eden Noodles");
         words.put(2, "Sals");
         words.put(3, "Pita Pit");
@@ -52,7 +52,7 @@ public class DataProvider {
         words.put(7, "Pocha ");
         words.put(8, "The Bowl");
         words.put(9, "Nandos");
-        words.put(10, "Scarecrow");
+        words.put(10,"Scarecrow");
         return words;
 
     }
