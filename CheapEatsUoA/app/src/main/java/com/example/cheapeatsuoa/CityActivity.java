@@ -3,7 +3,14 @@ package com.example.cheapeatsuoa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.cheapeatsuoa.Data.DataProvider;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CityActivity extends AppCompatActivity {
     class ViewHolder{
@@ -23,7 +30,13 @@ public class CityActivity extends AppCompatActivity {
 
         vh = new ViewHolder();
 
-
+        Map<Integer, String>  wordsDict = DataProvider.generateCityStoreNames();
+        List<String> stores = new ArrayList<String>( wordsDict.values());
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                stores);
+            ListView listView = (ListView) findViewById(R.id.list_view_city);
+            listView.setAdapter(itemsAdapter);
 
     }
 
