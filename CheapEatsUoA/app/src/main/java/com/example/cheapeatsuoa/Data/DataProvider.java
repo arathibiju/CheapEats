@@ -19,7 +19,7 @@ public class DataProvider {
         words.put(8, "Hollywood Bakery");
         words.put(9, "Jewel of India");
         words.put(10, "Hello Chinese");
-        words.put(11, "Chi Chop");
+        words.put(11, "ChiChop");
         return words;
 
     }

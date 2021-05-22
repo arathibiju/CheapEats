@@ -9,6 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.app.Activity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+
 public class MainActivity extends AppCompatActivity {
 
 
