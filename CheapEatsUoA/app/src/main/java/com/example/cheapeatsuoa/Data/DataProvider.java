@@ -27,14 +27,14 @@ public class DataProvider {
         Map<Integer, String> words =
                 new LinkedHashMap<>();
         words.put(1, "Superfino");
-        words.put(2, "Domain Deli");
-        words.put(3, "Anastasis Coffee Roasters");
+        words.put(2, "Poke House");
+        words.put(3, "Habitual Fix");
         words.put(4, "Kebabs To Go");
         words.put(5, "Subway");
         words.put(6, "St Pierrs");
         words.put(7, "Le Royal Bakery");
         words.put(8, "Cafe Karadeniz");
-        words.put(9, "Grafton Convenience Store");
+        words.put(9, "Columbus Coffee");
         words.put(10, "Orceard Cafe");
         return words;
 

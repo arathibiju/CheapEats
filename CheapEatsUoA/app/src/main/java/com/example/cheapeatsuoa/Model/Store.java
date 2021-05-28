@@ -1,70 +1,73 @@
 package com.example.cheapeatsuoa.Model;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import com.example.cheapeatsuoa.R;
+public class Store implements Parcelable {
+    private int index, image, image_b, image_c;
+    private String location, storeName, description, review;
 
-public class Store extends BaseAdapter {
-    //private int index;
-    private Context mContext;
-    //private String listImageFilename, storeName;
 
-    public Integer[] mThumbIds = {
-            R.drawable.city_1, R.drawable.city_2,
-            R.drawable.city_3, R.drawable.city_4,
-            R.drawable.city_5, R.drawable.city_6,
-            R.drawable.city_7, R.drawable.city_8,
-            R.drawable.city_9, R.drawable.city_10,
-            R.drawable.city_11
+    protected Store(Parcel in) {
+        index = in.readInt();
+        //location = in.readString();
+        //description = in.readString();
+        //review = in.readString();
+        storeName = in.readString();
+        image = in.readInt();
+        image_b = in.readInt();
+        image_c = in.readInt();
+    }
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Creator<Store> CREATOR = new Creator<Store>() {
+        @Override
+        public Store createFromParcel(Parcel in) {
+            return new Store(in);
+        }
+
+        @Override
+        public Store[] newArray(int size) {
+            return new Store[size];
+        }
     };
 
-    // Constructor
-    public Store(Context c){
-        mContext = c;
-    }
 
-    @Override
-    public int getCount() {
-        return mThumbIds.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mThumbIds[position];
-    }
-
-    @Override
     public long getItemId(int position) {
         return 0;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView = new ImageView(mContext);
-        imageView.setImageResource(mThumbIds[position]);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
-        return imageView;
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    // write object's data to the passed-in Parcel
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeInt(image_c);
+        dest.writeInt(image_b);
+        dest.writeInt(image);
+        dest.writeString(storeName);
+       // dest.writeString(review);
+        //dest.writeString(description);
+        //dest.writeString(location);
+        dest.writeInt(index);
     }
 
 
 
 /*    public String getListImageFilename() {
-        return listImageFilename;
+        return location;
     }
 
     public String getStoreName() {
         return storeName;
     }
 
-    public Store(int index, String listImageFilename, String storeName) {
+    public Store(int index, String location, String storeName) {
         this.index = index;
-        this.listImageFilename = listImageFilename;
+        this.location = location;
         this.storeName = storeName;
     }*/
 
