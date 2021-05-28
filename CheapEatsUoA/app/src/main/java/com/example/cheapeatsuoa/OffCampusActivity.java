@@ -2,11 +2,13 @@ package com.example.cheapeatsuoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.cheapeatsuoa.Data.DataProvider;
+import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,9 @@ public class OffCampusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_off_campus);
 
         vh = new OffCampusActivity.ViewHolder();
+
+        Intent receiveIntent = getIntent();
+        ArrayList<Store> offCampusStores = receiveIntent.getParcelableArrayListExtra("Off");
 
         Map<Integer, String> wordsDict = DataProvider.generateOffCampusStoreNames();
         List<String> stores = new ArrayList<String>( wordsDict.values());

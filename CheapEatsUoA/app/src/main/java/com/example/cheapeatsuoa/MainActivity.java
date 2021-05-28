@@ -1,6 +1,5 @@
 package com.example.cheapeatsuoa;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -9,10 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import android.app.Activity;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
+import com.example.cheapeatsuoa.Data.DataProvider;
+import com.example.cheapeatsuoa.Model.Store;
+
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -46,9 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                Intent cityCampusActivity = new Intent(getBaseContext(),CityActivity.class);
-                cityCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                startActivity(cityCampusActivity);
+                //Create a new arraylist to hold store objects
+                ArrayList<Store> cityStores = DataProvider.getCityStores(); // populate array list using data provider
+
+                Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
+                cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
+                cityCampusIntent.putParcelableArrayListExtra("City", cityStores);
+                startActivity(cityCampusIntent);
             }
         });
 
@@ -56,8 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
+                ArrayList<Store> graftonStores = DataProvider.getGraftonStores(); // populate array list using data provider
+
                 Intent graftonCampusActivity = new Intent(getBaseContext(),GraftonActivity.class);
                 graftonCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                graftonCampusActivity.putParcelableArrayListExtra("Grafton" , graftonStores);
                 startActivity(graftonCampusActivity);
             }
         });
@@ -66,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
+                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
                 Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
                 offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
                 startActivity(offCampusActivity);
             }
         });

@@ -22,27 +22,44 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 public class CityActivity extends AppCompatActivity {
-    /*class ViewHolder{
-        ListView listViewStores;
+    class ViewHolder{
+        //example of how to use the view holder class
+        GridView gridViewStores; // create a view type
 
         public ViewHolder(){
-            listViewStores = findViewById(R.id.list_view_city);
+            gridViewStores = findViewById(R.id.grid_view_city); // instantiate it using id
         }
     }
     ViewHolder vh;
-*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
+        vh = new ViewHolder();
 
-        GridView gridView = (GridView) findViewById(R.id.grid_view_city);
+        // then we can use the view by going vh.gridViewStores
+        GridView gridView = findViewById(R.id.grid_view_city);
+
+        Intent receiveIntent = getIntent();
+        ArrayList<Store> cityStores = receiveIntent.getParcelableArrayListExtra("City");
+        /* we can then use cityStores list to populate the recycler view first. like maybe use a
+         loop to go through the list then do the getStoreName method for each to get the list of names.
+         At least i think this is how it is. feel free to make any changes btw, idk if any of this is
+         like good coding practice*/
+
+
+
+
+
+
+
 
         // Instance of ImageAdapter Class
-        gridView.setAdapter(new Store(this));
+       // gridView.setAdapter(new Store(this));
 
-        //vh = new ViewHolder();
+        //
 
 /*        Map<Integer, String>  wordsDict = DataProvider.generateCityStoreNames();
         List<String> stores = new ArrayList<>( wordsDict.values());
