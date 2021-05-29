@@ -22,8 +22,7 @@ public class DataProvider {
         stores.put(7, "Ha! Poke");
         stores.put(8, "Hollywood Bakery");
         stores.put(9, "Jewel of India");
-        stores.put(10, "Hello Chinese");
-        stores.put(11, "ChiChop");
+        stores.put(10, "ChiChop");
         return stores;
     }
 
