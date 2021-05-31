@@ -1,5 +1,6 @@
 package com.example.cheapeatsuoa;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,23 +8,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.myViewHolder> {
 
-    //ArrayList<Store> arr;
-    int [] arr2;
+    ArrayList<Store> mStores;
+    int mLayoutID;
+    Context mContext;
 
-    public RecyclerViewAdapter(int [] arr2) {
-        //this.arr = arr;
-        this.arr2 = arr2;
+
+    public RecyclerViewAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Store> objects) {
+       super();
+        mLayoutID = resource;
+        mContext = context;
+        mStores = objects;
+        //this.objects = objects;
+        //this.arr2 = arr2;
     }
-
 
     @NonNull
     @Override
@@ -35,13 +43,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-    holder.imageView.setImageResource(arr2[position]);
-    holder.textView.setText("store no." + (position+1));
+        Store currentNumber = mStores.get(position);
+        int i = mContext.getResources().getIdentifier(currentNumber.getImage(), "drawable",
+                mContext.getPackageName());
+
+        holder.imageView.setImageResource(i);
+        holder.textView.setText(mStores.get(position).getStoreName());
     }
 
     @Override
     public int getItemCount() {
-        return arr2.length;
+        return mStores.size();
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder{
