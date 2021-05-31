@@ -27,7 +27,23 @@
        android:elevation="4dp">
    </androidx.appcompat.widget.Toolbar>
 
-<GridView
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recyclerView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:scrollbars="vertical"/>
+
+<!--       tools:context=".CityActivity"
+       android:numColumns="2"
+       android:horizontalSpacing="10dp"
+       android:verticalSpacing="10dp"
+       android:columnWidth="10dp"
+       android:stretchMode="columnWidth"
+       android:gravity="center"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp">-->
+
+<!--<GridView
     android:id="@+id/grid_view_city"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,7 +57,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
 
-</GridView>
+</GridView>-->
 
 </LinearLayout>
 
