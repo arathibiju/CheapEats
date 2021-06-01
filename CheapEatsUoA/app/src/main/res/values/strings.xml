@@ -3,4 +3,7 @@
     <string name="city_campus">City Campus</string>
     <string name="grafton_campus">Grafton Campus</string>
     <string name="off_campus">Off Campus</string>
+    <string name="description">Description</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
