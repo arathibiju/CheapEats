@@ -9,13 +9,14 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:orientation="vertical"
 android:layout_width="match_parent"
-android:layout_height="wrap_content">
+android:layout_height="wrap_content"
+>
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="1dp"
+        android:stretchMode = "columnWidth"
         android:scaleType="centerCrop"
         android:id="@+id/imageView"
         android:src="@drawable/ic_launcher_background">
@@ -26,8 +27,7 @@ android:layout_height="wrap_content">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Store No."
-    android:textSize="20dp"
-    android:layout_marginLeft="30dp"
+    android:textSize="15dp"
     android:gravity="center"
     android:id="@+id/textView"/>
 
