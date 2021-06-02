@@ -9,16 +9,17 @@ public class Store implements Parcelable {
     private String image, image_b, image_c;
     private String location, storeName, description, review;
 
-    public Store (int index,String image, String image_b, String image_c, String storeName ){
+    public Store (int index,String image, String image_b, String image_c, String storeName, String location ){
         this.index = index;
         this.image = image;
         this.image_b = image_b;
         this.image_c = image_c;
         this.storeName = storeName;
+        this.location = location;
     }
     private Store(Parcel in) {
         index = in.readInt();
-        //location = in.readString();
+        location = in.readString();
         //description = in.readString();
         //review = in.readString();
         storeName = in.readString();
@@ -49,7 +50,7 @@ public class Store implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeInt(index);
-        //dest.writeString(location);
+        dest.writeString(location);
         //dest.writeString(description);
        // dest.writeString(review);
         dest.writeString(storeName);
