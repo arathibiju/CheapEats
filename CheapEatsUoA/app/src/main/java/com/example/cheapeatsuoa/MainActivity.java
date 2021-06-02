@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
                 cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
-                cityCampusIntent.putParcelableArrayListExtra("City", cityStores);
+/*                cityCampusIntent.putParcelableArrayListExtra("City", cityStores);*/
                 startActivity(cityCampusIntent);
             }
         });

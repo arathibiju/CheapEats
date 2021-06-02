@@ -1,6 +1,8 @@
 package com.example.cheapeatsuoa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +17,25 @@ import java.util.List;
 import java.util.Map;
 
 public class OffCampusActivity extends AppCompatActivity {
-    class ViewHolder{
+
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerViewAdapter recyclerViewAdapter;
+    ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_off_campus);
+        recyclerView = findViewById(R.id.off_campus_recycler_view);
+        layoutManager =  new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_off_campus, offCampusStores);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setHasFixedSize(true);
+    }
+
+/*    class ViewHolder{
         ListView listViewStores;
 
         public ViewHolder(){
@@ -41,5 +61,5 @@ public class OffCampusActivity extends AppCompatActivity {
                 stores);
         ListView listView = (ListView) findViewById(R.id.list_view_off_campus);
         listView.setAdapter(itemsAdapter);
-    }
+    }*/
 }
