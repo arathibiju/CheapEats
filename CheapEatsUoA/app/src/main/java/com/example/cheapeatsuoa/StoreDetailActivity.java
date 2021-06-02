@@ -6,23 +6,33 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
-
-import java.util.ArrayList;
 
 public class StoreDetailActivity extends AppCompatActivity {
 
     class ViewHolder{
         //example of how to use the view holder class
+        TextView storeName;
         TextView imageCount;
         ViewPager2 viewPager2;
         public ViewHolder(){
             imageCount = findViewById(R.id.image_count);
             viewPager2 = findViewById(R.id.view_pager);
+            storeName = findViewById(R.id.detail_store_name);
         }
+    }
+    protected int[] currentImagesSet(Store currentStore){
+        int[] imagesID = new int[3];
+
+        imagesID[0] = this.getResources().getIdentifier(currentStore.getImage(), "drawable",
+                    this.getPackageName());
+        imagesID[1] = this.getResources().getIdentifier(currentStore.getImage_b(), "drawable",
+                this.getPackageName());
+        imagesID[2] = this.getResources().getIdentifier(currentStore.getImage_c(), "drawable",
+                this.getPackageName());
+        return imagesID;
     }
 
     ViewHolder vh;
@@ -34,17 +44,17 @@ public class StoreDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Intent receiveIntent = getIntent();
-        ArrayList<Store> offCampusStores = receiveIntent.getParcelableArrayListExtra("Off");
-
         vh = new StoreDetailActivity.ViewHolder();
-        // Initializing the viewpager2 object
-        // It will find the view by its id which you have provided into XML file
+
+        Intent receiveIntent = getIntent();
+        Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
+
+        vh.storeName.setText(detailActivityStore.getStoreName());
 
 
         // Object of ViewPager2Adapter that passes the context to the constructor of
         // ViewPager2Adapter
-        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
+        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this, currentImagesSet(detailActivityStore));
 
         // adding the adapter to viewPager2 to show the views in recyclerview
         vh.viewPager2.setAdapter(viewPager2Adapter);

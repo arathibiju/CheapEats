@@ -31,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mLayoutID = resource;
         mContext = context;
         mStores = objects;
+
         //this.objects = objects;
         //this.arr2 = arr2;
     }
@@ -41,25 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view,parent,false);
         myViewHolder myViewHolder = new myViewHolder(view);
 
-        myViewHolder.textView.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View myViewHolder){
-                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
-                detailActivity.putExtra("FromActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                mContext.startActivity(detailActivity);
-            }
-        });
-
-        myViewHolder.imageView.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View myViewHolder){
-                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
-                detailActivity.putExtra("FromActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                mContext.startActivity(detailActivity);
-            }
-        });
 
         return myViewHolder;
 
@@ -73,6 +56,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.imageView.setImageResource(i);
         holder.textView.setText(mStores.get(position).getStoreName());
+
+        holder.textView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View myViewHolder){
+                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+                detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                mContext.startActivity(detailActivity);
+            }
+        });
+
+        holder.imageView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View myViewHolder){
+                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+                detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                mContext.startActivity(detailActivity);
+            }
+        });
     }
 
     @Override

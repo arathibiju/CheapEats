@@ -16,12 +16,14 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
 
     // Array of image_view
     // Adding image_view from drawable folder
-    private int[] images = {R.drawable.city_1, R.drawable.city_1b, R.drawable.city_1c,};
+    private int[] images;
     private Context ctx;
 
     // Constructor of our ViewPager2Adapter class
-    ViewPager2Adapter(Context ctx) {
+    ViewPager2Adapter(Context ctx, int [] images) {
+
         this.ctx = ctx;
+        this.images = images;
     }
 
     // This method returns our layout
@@ -37,9 +39,6 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // This will set the image_view in imageview
         holder.image_view.setImageResource(images[position]);
-
-
-
 
     }
 
