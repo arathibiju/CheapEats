@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class SearchActivity extends AppCompatActivity {
 
-<application>
+/*<application>
     <activity android:name=".SearchableActivity" >
         <intent-filter>
             <action android:name="android.intent.action.SEARCH" />
@@ -14,7 +14,7 @@ public class SearchActivity extends AppCompatActivity {
         <meta-data android:name="android.app.searchable"
     android:resource="@xml/searchable"/>
     </activity>
-</application>
+</application>*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

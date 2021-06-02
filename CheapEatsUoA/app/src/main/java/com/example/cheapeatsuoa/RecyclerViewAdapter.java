@@ -1,6 +1,7 @@
 package com.example.cheapeatsuoa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
@@ -38,7 +40,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view,parent,false);
         myViewHolder myViewHolder = new myViewHolder(view);
+
+        myViewHolder.textView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View myViewHolder){
+                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+                detailActivity.putExtra("FromActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                mContext.startActivity(detailActivity);
+            }
+        });
+
+        myViewHolder.imageView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View myViewHolder){
+                Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+                detailActivity.putExtra("FromActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                mContext.startActivity(detailActivity);
+            }
+        });
+
         return myViewHolder;
+
     }
 
     @Override
@@ -66,6 +90,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             imageView=itemView.findViewById(R.id.imageView);
             textView =itemView.findViewById(R.id.textView);
         }
+
     }
 }
 
