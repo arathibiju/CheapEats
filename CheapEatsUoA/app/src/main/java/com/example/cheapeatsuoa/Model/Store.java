@@ -98,10 +98,7 @@ public class Store implements Parcelable {
         return storeName;
     }
 
-    public Store(int index, String location, String storeName) {
-        this.index = index;
-        this.location = location;
-        this.storeName = storeName;
+
     }*/
 
 }
