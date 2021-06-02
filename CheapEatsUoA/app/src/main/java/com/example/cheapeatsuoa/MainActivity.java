@@ -1,6 +1,7 @@
 package com.example.cheapeatsuoa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
@@ -21,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
         CardView cityCardView;
         CardView graftonCardView;
         CardView offCampusCardView;
+        SearchView searchView;
 
         public ViewHolder() {
             cityCardView =  findViewById(R.id.card_view_city);
             graftonCardView =  findViewById(R.id.card_view_grafton);
             offCampusCardView =  findViewById(R.id.card_view_off_campus);
+            searchView =  findViewById(R.id.search_view);
         }
     }
 
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -80,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(offCampusActivity);
             }
         });
+
+
+/*        vh.searchView.setOnSearchClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Intent SearchedActivity = new Intent(getBaseContext(),SearchActivity.class);
+                SearchedActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                startActivity(SearchedActivity);
+            }
+        });*/
 
     }
 }
