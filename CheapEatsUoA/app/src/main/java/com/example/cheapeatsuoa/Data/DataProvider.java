@@ -48,13 +48,13 @@ public class DataProvider {
                 new LinkedHashMap<>();
         stores.put(1, "Eden Noodles");
         stores.put(2, "Sals");
-        stores.put(3, "Pita Pit");
-        stores.put(4, "Sumthin Dumplin");
-        stores.put(5, "Obar Snack");
-        stores.put(6, "Sensational Chicken");
-        stores.put(7, "Pocha ");
-        stores.put(8, "The Bowl");
-        stores.put(9, "Nandos");
+        stores.put(3, "Sumthin Dumplin");
+        stores.put(4, "The Shelf");
+        stores.put(5, "Sensational Chicken");
+        stores.put(6, "Pocha");
+        stores.put(7, "Nandos");
+        stores.put(8, "Pita Pit");
+        stores.put(9,"Starbucks");
         stores.put(10,"Scarecrow");
         return stores;
 
