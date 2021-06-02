@@ -77,7 +77,7 @@ public class DataProvider {
     }
 
     public static ArrayList<Store> getGraftonStores() {
-        ArrayList<Store> storeList = new ArrayList<Store>();
+        ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> stores = generateGraftonStoreNames();
         for (Integer key : stores.keySet()) {
             int index = key;

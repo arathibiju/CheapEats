@@ -60,7 +60,7 @@
         style="@style/CategoryCardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#9da71c"
+        android:backgroundTint="#12AC79"
         app:cardCornerRadius="4dp">
 
         <TextView
