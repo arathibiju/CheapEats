@@ -77,7 +77,7 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
-    public void filter(String charText) {
+    public boolean filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         storeList.clear();
         if (charText.length() == 0) {
@@ -89,7 +89,9 @@ public class ListViewAdapter extends BaseAdapter {
                 }
             }
         }
+
         notifyDataSetChanged();
+        return storeList.size() != 0;
     }
 
 }

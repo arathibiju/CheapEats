@@ -12,8 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -27,10 +30,12 @@ public class SearchActivity extends AppCompatActivity {
     class ViewHolder {
         SearchView searchView;
         ListView listView;
+        TextView results;
 
         public ViewHolder() {
             searchView = findViewById(R.id.search_view);
             listView = findViewById(R.id.list);
+            results = findViewById(R.id.results_text);
         }
     }
     ViewHolder vh;
@@ -45,6 +50,7 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         vh = new ViewHolder();
 
@@ -63,14 +69,29 @@ public class SearchActivity extends AppCompatActivity {
         vh.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                boolean flag = adapter.filter(query);
+               /* if (!flag){
+                    Snackbar.make(findViewById(R.id.CoordinatorLayout), "No Results Found",
+                            Snackbar.LENGTH_LONG)
+                            .show();
 
+
+                }*/
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
 
-                adapter.filter(s);
+                boolean flag = adapter.filter(s);
+                if (!flag){
+                    vh.results.setText("No Results Found");
+
+
+                } else{
+                    vh.results.setText("");
+                }
+
                 return false;
             }
         });
@@ -91,10 +112,9 @@ public class SearchActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
