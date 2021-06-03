@@ -3,6 +3,8 @@ package com.example.cheapeatsuoa;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
@@ -18,6 +20,13 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
+  
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerViewAdapter recyclerViewAdapter;
+    Intent receiveIntent = getIntent();
+    /*ArrayList<Store> recentStores = RecyclerViewAdapter.getRecentStores(this);*/
+    ArrayList<Store> recentStores = DataProvider.getRecentStores();
 
     class ViewHolder{
         CardView cityCardView;
@@ -46,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        recyclerView = findViewById(R.id.top_picks_recycler_view);
+        layoutManager =  new GridLayoutManager(this, 3);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_main, recentStores);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setHasFixedSize(true);
+
+        vh = new ViewHolder();
+
 
         vh = new ViewHolder();
 

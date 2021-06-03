@@ -36,6 +36,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //this.arr2 = arr2;
     }
 
+    /*public static ArrayList<Store> getRecentStores(Context c) {
+            ArrayList<Store> storeList = new ArrayList<Store>();
+            storeList.add(c.get(position));
+            return storeList;
+    }*/
+
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,13 +63,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.imageView.setImageResource(i);
         holder.textView.setText(mStores.get(position).getStoreName());
 
+
         holder.textView.setOnClickListener(new View.OnClickListener(){
+
 
             @Override
             public void onClick(View myViewHolder){
                 Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
                 detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 mContext.startActivity(detailActivity);
+
+
             }
         });
 
@@ -75,6 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 mContext.startActivity(detailActivity);
             }
+
         });
     }
 
@@ -95,5 +106,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
     }
+
 }
 

@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
 
+import java.util.ArrayList;
+
 public class StoreDetailActivity extends AppCompatActivity {
 
     class ViewHolder{
@@ -51,9 +53,16 @@ public class StoreDetailActivity extends AppCompatActivity {
         Intent receiveIntent = getIntent();
         Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
 
-        vh.storeName.setText(detailActivityStore.getStoreName());
         vh.storeLocation.setText(detailActivityStore.getLocation());
 
+
+        /*Intent sendCurrentStore = new Intent(this, MainActivity.class);
+        sendCurrentStore.putExtra("FromDAct", detailActivityStore);
+        startActivityForResult(sendCurrentStore, 1);
+        */
+
+
+        vh.storeName.setText(detailActivityStore.getStoreName());
 
         // Object of ViewPager2Adapter that passes the context to the constructor of
         // ViewPager2Adapter
