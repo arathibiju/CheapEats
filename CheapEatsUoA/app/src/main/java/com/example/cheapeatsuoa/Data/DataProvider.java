@@ -127,7 +127,7 @@ public class DataProvider {
     public static ArrayList<Store> getGraftonStores() {
         ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> stores = generateGraftonStoreNames();
-        Map<Integer, String> storeLocations = generateCityStoreLocations();
+        Map<Integer, String> storeLocations = generateGraftonStoreLocations();
 
         for (Integer key : stores.keySet()) {
             int index = key;

@@ -21,17 +21,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
+
         <SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#88B7D3"
-            android:queryHint="Search"
+            android:queryHint="Search Stores"
             android:iconifiedByDefault="false"/>
+        <requestFocus />
         <ListView
-            android:id="@+id/search_list"
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="581dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp" />
         </LinearLayout>
