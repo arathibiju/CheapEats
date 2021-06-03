@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class StoreDetailActivity extends AppCompatActivity {
 
+
     class ViewHolder{
         //example of how to use the view holder class
         TextView storeName;

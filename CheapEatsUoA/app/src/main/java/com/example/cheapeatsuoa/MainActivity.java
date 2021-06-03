@@ -22,11 +22,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
   
     private RecyclerView recyclerView;
+    //Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
     Intent receiveIntent = getIntent();
     /*ArrayList<Store> recentStores = RecyclerViewAdapter.getRecentStores(this);*/
-    ArrayList<Store> recentStores = DataProvider.getRecentStores();
+    //ArrayList<Store> recentStores = DataProvider.addRecentStores(a);
+    ArrayList<Store> recentStores = DataProvider.addRecentStores(RecyclerViewAdapter.lastOnClickStore1, RecyclerViewAdapter.lastOnClickStore2, RecyclerViewAdapter.lastOnClickStore3);
 
     class ViewHolder{
         CardView cityCardView;
@@ -47,6 +49,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+/*    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        //super.recreate();
+        //ArrayList<Store> recentStores = DataProvider.addRecentStores(RecyclerViewAdapter.lastOnClickStore);
+        //When BACK BUTTON is pressed, the activity on the stack is restarted
+        //Do what you want on the refresh procedure here
+    }*/
+
+/*    @Override
+    public void onResume() {
+        this.recreate();
+    }*/
     ViewHolder vh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
                 cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
 /*                cityCampusIntent.putParcelableArrayListExtra("City", cityStores);*/
+                finish();
+                startActivity(getIntent());
                 startActivity(cityCampusIntent);
             }
         });
@@ -113,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent graftonCampusActivity = new Intent(getBaseContext(),GraftonActivity.class);
                 graftonCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 graftonCampusActivity.putParcelableArrayListExtra("Grafton" , graftonStores);
+                finish();
+                startActivity(getIntent());
                 startActivity(graftonCampusActivity);
             }
         });
@@ -125,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
                 offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
+                finish();
+                startActivity(getIntent());
                 startActivity(offCampusActivity);
             }
         });
@@ -140,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
                 searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
                 searchActivity.putParcelableArrayListExtra("city" , cityStores );
+                finish();
+                startActivity(getIntent());
                 startActivity(searchActivity);
             }
         });
@@ -154,6 +177,8 @@ public class MainActivity extends AppCompatActivity {
                 searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
                 searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
                 searchActivity.putParcelableArrayListExtra("city" , cityStores );
+                finish();
+                startActivity(getIntent());
                 startActivity(searchActivity);
             }
         });
@@ -168,9 +193,12 @@ public class MainActivity extends AppCompatActivity {
                 searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
                 searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
                 searchActivity.putParcelableArrayListExtra("city" , cityStores );
+                finish();
+                startActivity(getIntent());
                 startActivity(searchActivity);
             }
         });
+
 
 /*        vh.searchView.setOnSearchClickListener(new View.OnClickListener(){
 

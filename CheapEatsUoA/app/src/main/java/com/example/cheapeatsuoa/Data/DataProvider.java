@@ -4,7 +4,6 @@ import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DataProvider {
@@ -162,15 +161,26 @@ public class DataProvider {
         return storeList;
     }
 
-    public static ArrayList<Store> getRecentStores() {
+    public static ArrayList<Store> addRecentStores(Store recent1, Store recent2, Store recent3) {
         ArrayList<Store> storeList = new ArrayList<Store>(3);
-        Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
+        storeList.add(recent1);
+        storeList.add(recent2);
+        storeList.add(recent3);
+
+        return storeList;
+    }
+
+/*    public static ArrayList<Store> getRecentStores() {
+        ArrayList<Store> storeList = new ArrayList<Store>();
+*//*      Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
         storeList.add(a);
         Store b = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House", "110 Grafton Rd Grafton" );
         storeList.add(b);
         Store c = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland, Auckland 1010, New Zealand");
         storeList.add(c);
+        storeList.add(recent);*//*
+        //Store recent = addRecentStores();
         return storeList;
-    }
+    }*/
 
 }

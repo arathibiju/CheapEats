@@ -38,7 +38,7 @@ public class CityActivity extends AppCompatActivity{
          loop to go through the list then do the getStoreName method for each to get the list of names.
          At least i think this is how it is. feel free to make any changes btw, idk if any of this is
          like good coding practice*/
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
