@@ -24,6 +24,21 @@ public class DataProvider {
         stores.put(10, "ChiChop");
         return stores;
     }
+    public static Map<Integer, String> generateCityStoreDescription() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "Cafe");
+        stores.put(2, "Cafe");
+        stores.put(3, "Food Truck");
+        stores.put(4, "Food Truck");
+        stores.put(5, "Convenience Store");
+        stores.put(6, "Bar");
+        stores.put(7, "Pacific, Asian, Fusion, Poké");
+        stores.put(8, "Cafe");
+        stores.put(9, "Indian Takeaway");
+        stores.put(10, "Asian Takeaway");
+        return stores;
+    }
     public static Map<Integer, String> generateCityStoreLocations() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -72,7 +87,22 @@ public class DataProvider {
         return stores;
 
     }
+    public static Map<Integer, String> generateGraftonStoreDescription() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "Cafe");
+        stores.put(2, "Salad, Poké");
+        stores.put(3, "Healthy Food, Fast Food, Salad, Juices");
+        stores.put(4, "Turkish, Fast Food, Kebab");
+        stores.put(5, "Fast Food, Sandwiches");
+        stores.put(6, "Sushi");
+        stores.put(7, "Bakery, Cafe");
+        stores.put(8, "Turkish, Fast Food, Kebab");
+        stores.put(9, "Cafe");
+        stores.put(10, "Cafe");
+        return stores;
 
+    }
     public static Map<Integer, String> generateOffCampusStoreNames() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -104,19 +134,40 @@ public class DataProvider {
         return stores;
 
     }
+
+    public static Map<Integer, String> generateOffCampusStoreDescription() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "Chinese, Sichuan, Dumplings");
+        stores.put(2, "Pizza, Fast Food");
+        stores.put(3, "Dumplings, Chinese, Fusion");
+        stores.put(4, "Cafe Food, Coffee and Tea, Desserts");
+        stores.put(5, "Fast Food, Fried Chicken");
+        stores.put(6, "Korean, Fried Chicken");
+        stores.put(7, "Portuguese, Grill");
+        stores.put(8, "Healthy Food, Fast Food");
+        stores.put(9,"Cafe");
+        stores.put(10,"Cafe Food, Mediterranean");
+        return stores;
+    }
     public static ArrayList<Store> getCityStores() {
         ArrayList<Store> storeList = new ArrayList<Store>();
         Map<Integer, String> storeNames = generateCityStoreNames();
         Map<Integer, String> storeLocations = generateCityStoreLocations();
+        Map<Integer, String> storeDes = generateCityStoreDescription();
         for (Integer key : storeNames.keySet()) {
             int index = key;
             String name = storeNames.get(key);
             String location = storeLocations.get(key);
+            String descriptions = storeDes.get(key);
             String image = "city_" + String.valueOf(key);
             String image_b = "city_" + String.valueOf(key) + "b";
             String image_c = "city_" + String.valueOf(key) + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location );
+            s.setDescription(descriptions);
+
+            System.out.println(s.getDescription());
             storeList.add(s);
         }
 
@@ -127,6 +178,7 @@ public class DataProvider {
         ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> stores = generateGraftonStoreNames();
         Map<Integer, String> storeLocations = generateGraftonStoreLocations();
+        Map<Integer, String> storeDes = generateGraftonStoreDescription();
 
         for (Integer key : stores.keySet()) {
             int index = key;
@@ -137,6 +189,7 @@ public class DataProvider {
             String image_c = "grafton_" + String.valueOf(key) + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location);
+            s.setDescription(storeDes.get(key));
             storeList.add(s);
         }
 
@@ -146,6 +199,7 @@ public class DataProvider {
         ArrayList<Store> storeList = new ArrayList<Store>();
         Map<Integer, String> stores = generateOffCampusStoreNames();
         Map<Integer, String> storeLocations = generateOffCampusStoreLocations();
+        Map<Integer, String> storeDes = generateOffCampusStoreDescription();
         for (Integer key : stores.keySet()) {
             int index = key;
             String name = stores.get(key);
@@ -155,6 +209,7 @@ public class DataProvider {
             String image_c = "off_" + String.valueOf(key) + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location );
+            s.setDescription(storeDes.get(key));
             storeList.add(s);
         }
 

@@ -7,7 +7,10 @@ public class Store implements Parcelable {
 
     private int index;
     private String image, image_b, image_c;
-    private String location, storeName, description, review;
+    private String location;
+    private String storeName;
+    private String description;
+    private String review;
 
     public Store (int index,String image, String image_b, String image_c, String storeName, String location ){
         this.index = index;
@@ -20,7 +23,7 @@ public class Store implements Parcelable {
     private Store(Parcel in) {
         index = in.readInt();
         location = in.readString();
-        //description = in.readString();
+        description = in.readString();
         //review = in.readString();
         storeName = in.readString();
         image = in.readString();
@@ -51,7 +54,7 @@ public class Store implements Parcelable {
 
         dest.writeInt(index);
         dest.writeString(location);
-        //dest.writeString(description);
+        dest.writeString(description);
        // dest.writeString(review);
         dest.writeString(storeName);
         dest.writeString(image);
@@ -83,14 +86,15 @@ public class Store implements Parcelable {
         return storeName;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
     public String getReview() {
         return review;
     }
 
+    public String getDescription() { return description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 /*    public String getListImageFilename() {
         return location;
     }

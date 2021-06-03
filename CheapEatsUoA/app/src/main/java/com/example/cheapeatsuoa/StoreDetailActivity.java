@@ -20,12 +20,14 @@ public class StoreDetailActivity extends AppCompatActivity {
         TextView storeName;
         TextView storeLocation;
         TextView imageCount;
+        TextView description;
         ViewPager2 viewPager2;
         public ViewHolder(){
             imageCount = findViewById(R.id.image_count);
             viewPager2 = findViewById(R.id.view_pager);
             storeName = findViewById(R.id.detail_store_name);
             storeLocation = findViewById(R.id.detail_store_location);
+            description = findViewById(R.id.general_food_type);
         }
     }
     protected int[] currentImagesSet(Store currentStore){
@@ -55,15 +57,9 @@ public class StoreDetailActivity extends AppCompatActivity {
         Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
 
         vh.storeLocation.setText(detailActivityStore.getLocation());
-
-
-        /*Intent sendCurrentStore = new Intent(this, MainActivity.class);
-        sendCurrentStore.putExtra("FromDAct", detailActivityStore);
-        startActivityForResult(sendCurrentStore, 1);
-        */
-
-
         vh.storeName.setText(detailActivityStore.getStoreName());
+
+        vh.description.setText(detailActivityStore.getDescription());
 
         // Object of ViewPager2Adapter that passes the context to the constructor of
         // ViewPager2Adapter
