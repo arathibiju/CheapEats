@@ -1,15 +1,17 @@
 package com.example.cheapeatsuoa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
@@ -18,24 +20,30 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-
+  
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
     Intent receiveIntent = getIntent();
     /*ArrayList<Store> recentStores = RecyclerViewAdapter.getRecentStores(this);*/
     ArrayList<Store> recentStores = DataProvider.getRecentStores();
+
     class ViewHolder{
         CardView cityCardView;
         CardView graftonCardView;
         CardView offCampusCardView;
-        SearchView searchView;
+        CardView searchDialog;
+        EditText searchEditText;
+        ImageView searchIcon;
+
 
         public ViewHolder() {
             cityCardView =  findViewById(R.id.card_view_city);
             graftonCardView =  findViewById(R.id.card_view_grafton);
             offCampusCardView =  findViewById(R.id.card_view_off_campus);
-            searchView =  findViewById(R.id.search_view);
+            searchDialog = findViewById(R.id.card_search);
+            searchEditText = findViewById(R.id.search_edit_text);
+            searchIcon = findViewById(R.id.search_image_icon);
         }
     }
 
@@ -56,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
 
         vh = new ViewHolder();
 
+
+        vh = new ViewHolder();
+
+       /* vh.searchView.setQueryHint("Type your keyword here");
+        vh.searchView.onActionViewExpanded();
+        vh.searchView.setIconified(false);
+        vh.searchView.clearFocus();
+
+        vh.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                //adapter.getFilter().filter(newText);
+
+                return false;
+            }
+        });*/
 
 
 
@@ -98,6 +128,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        vh.searchDialog.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                startActivity(searchActivity);
+            }
+        });
+        vh.searchEditText.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                startActivity(searchActivity);
+            }
+        });
+        vh.searchIcon.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                startActivity(searchActivity);
+            }
+        });
 
 /*        vh.searchView.setOnSearchClickListener(new View.OnClickListener(){
 

@@ -17,12 +17,14 @@ public class StoreDetailActivity extends AppCompatActivity {
     class ViewHolder{
         //example of how to use the view holder class
         TextView storeName;
+        TextView storeLocation;
         TextView imageCount;
         ViewPager2 viewPager2;
         public ViewHolder(){
             imageCount = findViewById(R.id.image_count);
             viewPager2 = findViewById(R.id.view_pager);
             storeName = findViewById(R.id.detail_store_name);
+            storeLocation = findViewById(R.id.detail_store_location);
         }
     }
     protected int[] currentImagesSet(Store currentStore){
@@ -51,6 +53,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         Intent receiveIntent = getIntent();
         Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
 
+        vh.storeLocation.setText(detailActivityStore.getLocation());
 
 
         /*Intent sendCurrentStore = new Intent(this, MainActivity.class);
