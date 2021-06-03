@@ -51,7 +51,6 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         vh.storeName.setText(detailActivityStore.getStoreName());
 
-
         // Object of ViewPager2Adapter that passes the context to the constructor of
         // ViewPager2Adapter
         ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this, currentImagesSet(detailActivityStore));
