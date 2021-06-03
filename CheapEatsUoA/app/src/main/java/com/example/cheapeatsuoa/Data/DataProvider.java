@@ -164,11 +164,11 @@ public class DataProvider {
 
     public static ArrayList<Store> getRecentStores() {
         ArrayList<Store> storeList = new ArrayList<Store>(3);
-        Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo");
+        Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
         storeList.add(a);
-        Store b = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House" );
+        Store b = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House", "110 Grafton Rd Grafton" );
         storeList.add(b);
-        Store c = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin");
+        Store c = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland, Auckland 1010, New Zealand");
         storeList.add(c);
         return storeList;
     }
