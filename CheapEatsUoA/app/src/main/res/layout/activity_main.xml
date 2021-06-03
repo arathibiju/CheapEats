@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#525253"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="italic"
             android:text="Recently Visited" />
 
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:scrollbars="horizontal"/>
+                android:scrollbars="none"/>
         </HorizontalScrollView>
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_marginTop="16dp"
             android:layout_gravity="center"
             android:textColor="#525253"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="italic"
             android:text="Locations" />
 

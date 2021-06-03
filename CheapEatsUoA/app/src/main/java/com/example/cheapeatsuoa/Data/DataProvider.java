@@ -109,5 +109,15 @@ public class DataProvider {
         return storeList;
     }
 
+    public static ArrayList<Store> getRecentStores() {
+        ArrayList<Store> storeList = new ArrayList<Store>(3);
+        Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo");
+        storeList.add(a);
+        Store b = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House" );
+        storeList.add(b);
+        Store c = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin");
+        storeList.add(c);
+        return storeList;
+    }
 
 }

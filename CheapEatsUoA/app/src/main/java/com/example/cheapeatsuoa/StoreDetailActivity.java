@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
 
+import java.util.ArrayList;
+
 public class StoreDetailActivity extends AppCompatActivity {
 
     class ViewHolder{
@@ -48,6 +50,14 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         Intent receiveIntent = getIntent();
         Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
+
+
+
+        /*Intent sendCurrentStore = new Intent(this, MainActivity.class);
+        sendCurrentStore.putExtra("FromDAct", detailActivityStore);
+        startActivityForResult(sendCurrentStore, 1);
+        */
+
 
         vh.storeName.setText(detailActivityStore.getStoreName());
 
