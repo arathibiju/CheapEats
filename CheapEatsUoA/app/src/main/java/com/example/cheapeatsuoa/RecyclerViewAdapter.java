@@ -32,8 +32,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mContext = context;
         mStores = objects;
 
-        //this.objects = objects;
-        //this.arr2 = arr2;
     }
 
     /*public static ArrayList<Store> getRecentStores(Context c) {

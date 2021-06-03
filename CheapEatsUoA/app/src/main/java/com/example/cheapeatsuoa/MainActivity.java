@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -133,8 +134,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                ArrayList<Store> graftonStores = DataProvider.getGraftonStores();
+                ArrayList<Store> cityStores = DataProvider.getCityStores();
                 Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+                searchActivity.putParcelableArrayListExtra("city" , cityStores );
                 startActivity(searchActivity);
             }
         });
@@ -142,10 +147,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-
-                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                ArrayList<Store> graftonStores = DataProvider.getOffCampusStores();
+                ArrayList<Store> cityStores = DataProvider.getCityStores();
+                ArrayList<Store> offCampusStores = DataProvider.getGraftonStores();
                 Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+                searchActivity.putParcelableArrayListExtra("city" , cityStores );
                 startActivity(searchActivity);
             }
         });
@@ -153,10 +161,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-
-                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+                ArrayList<Store> graftonStores = DataProvider.getOffCampusStores();
+                ArrayList<Store> cityStores = DataProvider.getCityStores();
+                ArrayList<Store> offCampusStores = DataProvider.getGraftonStores();
                 Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("search" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+                searchActivity.putParcelableArrayListExtra("city" , cityStores );
                 startActivity(searchActivity);
             }
         });

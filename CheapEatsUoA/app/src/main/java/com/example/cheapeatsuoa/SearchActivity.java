@@ -21,6 +21,8 @@ public class SearchActivity extends AppCompatActivity {
 
     ListViewAdapter adapter;
     ArrayList<Store> offCampus = new ArrayList<>();
+    ArrayList<Store> grafton = new ArrayList<>();
+    ArrayList<Store> city = new ArrayList<>();
 
     class ViewHolder {
         SearchView searchView;
@@ -48,10 +50,13 @@ public class SearchActivity extends AppCompatActivity {
 
         // Get the intent, verify the action and get the query
         Intent intent = getIntent();
-        offCampus =  intent.getParcelableArrayListExtra("search");
+        offCampus =  intent.getParcelableArrayListExtra("offcampus");
+        grafton =  intent.getParcelableArrayListExtra("grafton");
+        city =  intent.getParcelableArrayListExtra("city");
+
 
         // Pass results to ListViewAdapter Class
-        adapter = new ListViewAdapter(this, offCampus);
+        adapter = new ListViewAdapter(this, offCampus, grafton, city);
         vh.listView.setAdapter(adapter);
 
 

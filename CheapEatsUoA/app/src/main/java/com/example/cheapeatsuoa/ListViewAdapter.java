@@ -23,12 +23,14 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<Store> storeList;
     private ArrayList<Store> arraylist;
 
-    public ListViewAdapter(Context context, ArrayList<Store> storeList) {
+    public ListViewAdapter(Context context, ArrayList<Store> storeList, ArrayList<Store> grafton, ArrayList<Store> city) {
         mContext = context;
         this.storeList = storeList;
         inflater = LayoutInflater.from(mContext);
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(storeList);
+        this.arraylist.addAll(grafton);
+        this.arraylist.addAll(city);
     }
 
     class ViewHolder{
