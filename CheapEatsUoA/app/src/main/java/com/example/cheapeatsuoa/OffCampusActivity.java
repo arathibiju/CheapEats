@@ -35,6 +35,13 @@ public class OffCampusActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+}
+
 /*    class ViewHolder{
         ListView listViewStores;
 
@@ -62,4 +69,3 @@ public class OffCampusActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_view_off_campus);
         listView.setAdapter(itemsAdapter);
     }*/
-}
