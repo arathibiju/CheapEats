@@ -46,7 +46,6 @@
             android:id="@+id/top_picks_scroll"
             android:layout_width="wrap_content"
             android:layout_height="193dp"
-            android:layout_marginBottom="30dp"
             android:layout_weight="0"
             android:layout_gravity="center"
             android:scrollbars="horizontal">
@@ -57,8 +56,19 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:scrollbars="horizontal" />
+                android:scrollbars="horizontal"/>
         </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/categories_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:textColor="#525253"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:text="Locations" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_city"

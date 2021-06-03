@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
-                Intent offCampusActivity = new Intent(getBaseContext(),StoreDetailActivity.class);
+                Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
                 offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
                 startActivity(offCampusActivity);
