@@ -27,6 +27,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<Store> mStores;
     public static Store lastOnClickStore1 = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
     public static Store lastOnClickStore2 = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House", "110 Grafton Rd Grafton" );
+
     public static Store lastOnClickStore3 = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland, Auckland 1010, New Zealand");
     int mLayoutID;
     Context mContext;
@@ -74,12 +75,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View myViewHolder){
                 Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
-                detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                detailActivity.putExtra("FromActivity", mStores.get(position));
                 mContext.startActivity(detailActivity);
                 lastOnClickStore3 = lastOnClickStore2;
+                lastOnClickStore3.setDescription(lastOnClickStore2.getDescription());
+                lastOnClickStore3.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
+                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
+                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
                 lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
-
+                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
+                lastOnClickStore1.setCost(mStores.get(position).getCost());
             }
         });
 
@@ -89,6 +95,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View myViewHolder){
                 Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+
                 detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 mContext.startActivity(detailActivity);
                 //(0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
@@ -97,8 +104,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 /*                ArrayList<Store> storeList = new ArrayList<Store>(3);
                 storeList.add(mStores.get(position));*/
                 lastOnClickStore3 = lastOnClickStore2;
+                lastOnClickStore3.setDescription(lastOnClickStore2.getDescription());
+                lastOnClickStore3.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
+                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
+                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
                 lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
+                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
+                lastOnClickStore1.setCost(mStores.get(position).getCost());
             }
 
         });

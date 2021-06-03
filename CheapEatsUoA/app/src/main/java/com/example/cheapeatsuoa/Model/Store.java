@@ -10,7 +10,12 @@ public class Store implements Parcelable {
     private String location;
     private String storeName;
     private String description;
-    private String review;
+
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
+    private String cost;
 
     public Store (int index,String image, String image_b, String image_c, String storeName, String location ){
         this.index = index;
@@ -24,7 +29,7 @@ public class Store implements Parcelable {
         index = in.readInt();
         location = in.readString();
         description = in.readString();
-        //review = in.readString();
+        cost = in.readString();
         storeName = in.readString();
         image = in.readString();
         image_b = in.readString();
@@ -55,7 +60,7 @@ public class Store implements Parcelable {
         dest.writeInt(index);
         dest.writeString(location);
         dest.writeString(description);
-       // dest.writeString(review);
+       dest.writeString(cost);
         dest.writeString(storeName);
         dest.writeString(image);
         dest.writeString(image_b);
@@ -87,11 +92,12 @@ public class Store implements Parcelable {
     }
 
 
-    public String getReview() {
-        return review;
+    public String getCost() {
+        return cost;
     }
 
     public String getDescription() { return description; }
+
     public void setDescription(String description) {
         this.description = description;
     }

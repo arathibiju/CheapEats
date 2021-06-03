@@ -24,6 +24,22 @@ public class DataProvider {
         stores.put(10, "ChiChop");
         return stores;
     }
+
+    public static Map<Integer, String> generateCityStoreCost() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "$10 per person");
+        stores.put(2, "$10 per person");
+        stores.put(3, "$10 per person");
+        stores.put(4, "$10 per person");
+        stores.put(5, "$10 per person");
+        stores.put(6, "$15 per person");
+        stores.put(7, "$15 per person");
+        stores.put(8, "$10 per person");
+        stores.put(9, "$15 per person");
+        stores.put(10, "$15 per person");
+        return stores;
+    }
     public static Map<Integer, String> generateCityStoreDescription() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -68,6 +84,23 @@ public class DataProvider {
         stores.put(8, "Cafe Karadeniz");
         stores.put(9, "Columbus Coffee");
         stores.put(10, "Orceard Cafe");
+        return stores;
+
+    }
+
+    public static Map<Integer, String> generateGraftonStoreCost() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "$20 per person");
+        stores.put(2, "$20 per person");
+        stores.put(3, "$15 per person");
+        stores.put(4, "$15 per person");
+        stores.put(5, "$15 per person");
+        stores.put(6, "$10 per person");
+        stores.put(7, "$10 per person");
+        stores.put(8, "$20 per person");
+        stores.put(9, "$20 per person");
+        stores.put(10, "$20 per person");
         return stores;
 
     }
@@ -118,6 +151,21 @@ public class DataProvider {
         stores.put(10,"Scarecrow");
         return stores;
     }
+    public static Map<Integer, String> generateOffCampusStoreCost() {
+        Map<Integer, String> stores =
+                new LinkedHashMap<>();
+        stores.put(1, "$15 per person");
+        stores.put(2, "$20 per person");
+        stores.put(3, "$15 per person");
+        stores.put(4, "$25 per person");
+        stores.put(5, "$10 per person");
+        stores.put(6, "$15 per person");
+        stores.put(7, "$15 per person");
+        stores.put(8, "$10 per person");
+        stores.put(9,"$10 per person");
+        stores.put(10,"$15 per person");
+        return stores;
+    }
     public static Map<Integer, String> generateOffCampusStoreLocations() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -155,19 +203,21 @@ public class DataProvider {
         Map<Integer, String> storeNames = generateCityStoreNames();
         Map<Integer, String> storeLocations = generateCityStoreLocations();
         Map<Integer, String> storeDes = generateCityStoreDescription();
+        Map<Integer, String> storeCost = generateCityStoreCost();
         for (Integer key : storeNames.keySet()) {
             int index = key;
             String name = storeNames.get(key);
             String location = storeLocations.get(key);
             String descriptions = storeDes.get(key);
+
             String image = "city_" + String.valueOf(key);
             String image_b = "city_" + String.valueOf(key) + "b";
             String image_c = "city_" + String.valueOf(key) + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location );
             s.setDescription(descriptions);
+            s.setCost(storeCost.get(key));
 
-            System.out.println(s.getDescription());
             storeList.add(s);
         }
 
@@ -179,6 +229,7 @@ public class DataProvider {
         Map<Integer, String> stores = generateGraftonStoreNames();
         Map<Integer, String> storeLocations = generateGraftonStoreLocations();
         Map<Integer, String> storeDes = generateGraftonStoreDescription();
+        Map<Integer, String> storeCost = generateGraftonStoreCost();
 
         for (Integer key : stores.keySet()) {
             int index = key;
@@ -190,6 +241,7 @@ public class DataProvider {
 
             Store s = new Store ( index, image, image_b, image_c, name, location);
             s.setDescription(storeDes.get(key));
+            s.setCost(storeCost.get(key));
             storeList.add(s);
         }
 
@@ -200,6 +252,7 @@ public class DataProvider {
         Map<Integer, String> stores = generateOffCampusStoreNames();
         Map<Integer, String> storeLocations = generateOffCampusStoreLocations();
         Map<Integer, String> storeDes = generateOffCampusStoreDescription();
+        Map<Integer, String> storeCost = generateOffCampusStoreCost();
         for (Integer key : stores.keySet()) {
             int index = key;
             String name = stores.get(key);
@@ -210,6 +263,7 @@ public class DataProvider {
 
             Store s = new Store ( index, image, image_b, image_c, name, location );
             s.setDescription(storeDes.get(key));
+            s.setCost(storeCost.get(key));
             storeList.add(s);
         }
 
