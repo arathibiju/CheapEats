@@ -5,12 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class ListViewAdapter extends BaseAdapter {
@@ -19,19 +20,21 @@ public class ListViewAdapter extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    private ArrayList<Store> storeList = null;
+    private ArrayList<Store> storeList;
     private ArrayList<Store> arraylist;
 
     public ListViewAdapter(Context context, ArrayList<Store> storeList) {
         mContext = context;
         this.storeList = storeList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Store>();
+        this.arraylist = new ArrayList<>();
         this.arraylist.addAll(storeList);
     }
 
-    public class ViewHolder {
+    class ViewHolder{
+        ImageView icon;
         TextView name;
+
     }
 
     @Override
@@ -57,6 +60,7 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listview_item, parent,false);
             // Locate the TextViews in listview_item.xml
             holder.name =  view.findViewById(R.id.name);
+            holder.icon = view.findViewById(R.id.search_list_image);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -64,15 +68,18 @@ public class ListViewAdapter extends BaseAdapter {
 
         // Set the results into TextViews
         holder.name.setText(storeList.get(position).getStoreName());
+        int imageID = mContext.getResources().getIdentifier(storeList.get(position).getImage_b(), "drawable",
+                mContext.getPackageName());
+        holder.icon.setImageResource(imageID);
+
         return view;
     }
 
-    // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         storeList.clear();
         if (charText.length() == 0) {
-            storeList.addAll(arraylist);
+            storeList.clear();
         } else {
             for (Store wp : arraylist) {
                 if (wp.getStoreName().toLowerCase(Locale.getDefault()).contains(charText)) {

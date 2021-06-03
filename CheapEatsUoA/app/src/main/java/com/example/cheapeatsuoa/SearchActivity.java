@@ -1,18 +1,15 @@
 package com.example.cheapeatsuoa;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.core.view.MenuItemCompat;
 
-import android.app.ListActivity;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -41,6 +38,12 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        Toolbar toolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_arrow);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         vh = new ViewHolder();
 
         // Get the intent, verify the action and get the query
@@ -51,7 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new ListViewAdapter(this, offCampus);
         vh.listView.setAdapter(adapter);
 
-        // Locate the EditText in listview_main.xml
+
         vh.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -62,23 +65,33 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
 
-                String text = s;
-                adapter.filter(text);
+                adapter.filter(s);
                 return false;
             }
         });
-       /* if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            searchStores(query);
-        }*/
 
-
-
+        setupStoreSelectedListener();
     }
 
-
-
-    private void searchStores(String query) {
+    public void setupStoreSelectedListener() {
+        vh.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Launch the detail view passing book as an extra
+                Intent intent = new Intent(SearchActivity.this, StoreDetailActivity.class);
+                intent.putExtra("FromActivity", adapter.getItem(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+                startActivity(intent);
+            }
+        });
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

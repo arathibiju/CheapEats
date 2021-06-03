@@ -10,6 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:logo="@drawable/logo"
+        android:paddingEnd="60dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         style="@style/ToolbarTheme"
@@ -35,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
             android:layout_marginBottom="16dp" />
         </LinearLayout>
 </LinearLayout>
