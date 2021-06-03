@@ -35,6 +35,13 @@ public class GraftonActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+}
+
 
 
 /*     class ViewHolder{
@@ -64,4 +71,3 @@ public class GraftonActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_view_grafton);
         listView.setAdapter(itemsAdapter);
     }*/
-}

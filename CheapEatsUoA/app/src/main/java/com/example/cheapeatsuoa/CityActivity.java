@@ -50,7 +50,12 @@ public class CityActivity extends AppCompatActivity{
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
     }
-}
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }}
 
 
 /*    int[] arr = {R.drawable.city_1, R.drawable.city_2,

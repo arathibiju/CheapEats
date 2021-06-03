@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(cityCampusIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -133,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(graftonCampusActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(offCampusActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -164,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(searchActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         vh.searchEditText.setOnClickListener(new View.OnClickListener(){
@@ -180,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(searchActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         vh.searchIcon.setOnClickListener(new View.OnClickListener(){
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(getIntent());
                 startActivity(searchActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
