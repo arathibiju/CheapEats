@@ -91,28 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
         vh = new ViewHolder();
 
-       /* vh.searchView.setQueryHint("Type your keyword here");
-        vh.searchView.onActionViewExpanded();
-        vh.searchView.setIconified(false);
-        vh.searchView.clearFocus();
-
-        vh.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                //adapter.getFilter().filter(newText);
-
-                return false;
-            }
-        });*/
-
-
-
         vh.cityCardView.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -213,17 +191,6 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
-
-
-/*        vh.searchView.setOnSearchClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                Intent SearchedActivity = new Intent(getBaseContext(),SearchActivity.class);
-                SearchedActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                startActivity(SearchedActivity);
-            }
-        });*/
 
     }
 }

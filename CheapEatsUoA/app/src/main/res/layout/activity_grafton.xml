@@ -20,31 +20,30 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/city_campus_heading_text"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:paddingTop="3dp"
-            android:text="Grafton Campus"
-            android:textAlignment="center"
-            android:textColor="#525253"
-            android:textSize="20sp"
-            android:textStyle="normal" />
         <androidx.cardview.widget.CardView
-            android:id="@+id/city_campus_heading_card"
+            android:id="@+id/grafton_campus_heading_card"
             style="@style/CategoryCardStyle"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
-            android:alpha="0.3"
-            app:cardBackgroundColor="#525253"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="20dp">
+            app:cardBackgroundColor="#e0e0e0"
+            app:cardCornerRadius="8dp">
+            <TextView
+                android:id="@+id/grafton_campus_heading_text"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="3dp"
+                android:text="Grafton Campus"
+                android:textAlignment="center"
+                android:textColor="#525253"
+                android:textSize="20sp"
+                android:textStyle="normal" />
         </androidx.cardview.widget.CardView>
     </FrameLayout>
 
@@ -55,5 +54,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_gravity="center"
         android:scrollbars="vertical"/>
 </LinearLayout>

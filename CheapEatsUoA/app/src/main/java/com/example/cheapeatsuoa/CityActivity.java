@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -53,7 +54,12 @@ public class CityActivity extends AppCompatActivity{
         window.setStatusBarColor(ContextCompat.getColor(CityActivity.this, R.color.dark_blue_primary_dark));
 
         recyclerView = findViewById(R.id.city_recycler_view);
-        layoutManager =  new GridLayoutManager(this, 2);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            layoutManager =  new GridLayoutManager(this, 2);
+        }
+        else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            layoutManager =  new GridLayoutManager(this, 4);
+        }
         recyclerView.setLayoutManager(layoutManager);
         recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_city, cityStores);
         recyclerView.setAdapter(recyclerViewAdapter);

@@ -88,7 +88,8 @@
             android:textColor = "@android:color/primary_text_light"
             android:textSize = "16sp"
             />
-        <!--<TextView
+
+        <TextView
             android:id="@+id/general_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +99,7 @@
             android:textColor = "#757575"
             android:textSize = "16sp"
             />
--->
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_store_info"
             style="@style/CategoryCardStyle"
@@ -128,8 +129,8 @@
     android:layout_marginTop="8dp">
     <ImageView
         android:id="@+id/location_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:src="@drawable/ic_outline_location_on_24" />
     <TextView
         android:id="@+id/detail_store_location"
@@ -149,8 +150,8 @@
             android:layout_marginTop="8dp">
             <ImageView
                 android:id="@+id/cost_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:src="@drawable/money_icon" />
             <TextView
                 android:id="@+id/detail_store_cost"
@@ -170,8 +171,8 @@
             android:layout_marginTop="8dp">
             <ImageView
                 android:id="@+id/hours_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:src="@drawable/ic_baseline_access_time_24" />
             <TextView
                 android:id="@+id/detail_store_hours"

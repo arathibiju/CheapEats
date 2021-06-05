@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -37,7 +38,12 @@ public class OffCampusActivity extends AppCompatActivity {
         window.setStatusBarColor(ContextCompat.getColor(OffCampusActivity.this, R.color.dark_blue_primary_dark));
 
         recyclerView = findViewById(R.id.off_campus_recycler_view);
-        layoutManager =  new GridLayoutManager(this, 2);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            layoutManager =  new GridLayoutManager(this, 2);
+        }
+        else if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            layoutManager =  new GridLayoutManager(this, 4);
+        }
         recyclerView.setLayoutManager(layoutManager);
         recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_off_campus, offCampusStores);
         recyclerView.setAdapter(recyclerViewAdapter);
