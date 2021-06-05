@@ -9,35 +9,47 @@
         android:roundIcon="@mipmap/icon_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SearchActivity">
-<!--            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>-->
-        </activity>
-        <activity android:name=".StoreDetailActivity">
+
+        <activity android:name=".SearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".OffCampusActivity">
-            android:label = "Off Campus Activity"
-            android:theme = "@style/Theme.CheapEatsUoA.OffCampusActivity"
+        <activity android:name=".StoreDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
-        <activity android:name=".GraftonActivity">
-            android:label = "Grafton Activity"
-            android:theme = "@style/Theme.CheapEatsUoA.GraftonActivity"
+        <activity android:name=".OffCampusActivity"
+            android:label = "OffCampusActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
-        <activity android:name=".CityActivity">
-            android:label = "City Activity"
-            android:theme = "@style/Theme.CheapEatsUoA.CityActivity"
+        <activity android:name=".GraftonActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label = "GraftonActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".CityActivity"
+            android:label = "CityActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
+
 
 </manifest>

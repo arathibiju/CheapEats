@@ -28,15 +28,22 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <SearchView
-            android:id="@+id/search_view"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#88B7D3"
-            android:queryHint="Search Stores"
-            android:iconifiedByDefault="false"/>
-        <requestFocus />
+            app:cardCornerRadius="15dp">
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e0e0e0"
+                android:paddingBottom="8dp"
+                android:paddingEnd="24dp"
+                android:queryHint="Search Stores"
+                android:iconifiedByDefault="false"/>
+            <requestFocus />
+        </androidx.cardview.widget.CardView>
+
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
