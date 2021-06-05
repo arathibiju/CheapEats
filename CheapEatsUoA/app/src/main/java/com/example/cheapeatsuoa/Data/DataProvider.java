@@ -75,7 +75,7 @@ public class DataProvider {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
         stores.put(1, "Superfino");
-        stores.put(2, "Poke House");
+        stores.put(2, "Poké House");
         stores.put(3, "Habitual Fix");
         stores.put(4, "Kebabs To Go");
         stores.put(5, "Subway");
@@ -209,14 +209,13 @@ public class DataProvider {
             String name = storeNames.get(key);
             String location = storeLocations.get(key);
             String descriptions = storeDes.get(key);
-
+            String cost = storeCost.get(key);
             String image = "city_" + String.valueOf(key);
             String image_b = "city_" + String.valueOf(key) + "b";
             String image_c = "city_" + String.valueOf(key) + "c";
 
-            Store s = new Store ( index, image, image_b, image_c, name, location );
-            s.setDescription(descriptions);
-            s.setCost(storeCost.get(key));
+            Store s = new Store ( index, image, image_b, image_c, name, location,cost, descriptions );
+
 
             storeList.add(s);
         }
@@ -235,13 +234,13 @@ public class DataProvider {
             int index = key;
             String name = stores.get(key);
             String location = storeLocations.get(key);
+            String cost = storeCost.get(key);
+            String description = storeDes.get(key);
             String image = "grafton_" + String.valueOf(key);
             String image_b = "grafton_" + String.valueOf(key) + "b";
             String image_c = "grafton_" + String.valueOf(key) + "c";
 
-            Store s = new Store ( index, image, image_b, image_c, name, location);
-            s.setDescription(storeDes.get(key));
-            s.setCost(storeCost.get(key));
+            Store s = new Store ( index, image, image_b, image_c, name, location, cost, description);
             storeList.add(s);
         }
 
@@ -257,13 +256,13 @@ public class DataProvider {
             int index = key;
             String name = stores.get(key);
             String location = storeLocations.get(key);
+            String cost = storeCost.get(key);
+            String description = storeDes.get(key);
             String image = "off_" + String.valueOf(key);
             String image_b = "off_" + String.valueOf(key) + "b";
             String image_c = "off_" + String.valueOf(key) + "c";
 
-            Store s = new Store ( index, image, image_b, image_c, name, location );
-            s.setDescription(storeDes.get(key));
-            s.setCost(storeCost.get(key));
+            Store s = new Store ( index, image, image_b, image_c, name, location, cost,description );
             storeList.add(s);
         }
 

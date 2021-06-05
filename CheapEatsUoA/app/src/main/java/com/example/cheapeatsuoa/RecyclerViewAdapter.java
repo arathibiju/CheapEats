@@ -20,10 +20,16 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.myViewHolder> {
 
     ArrayList<Store> mStores;
-    public static Store lastOnClickStore1 = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
-    public static Store lastOnClickStore2 = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House", "110 Grafton Rd Grafton" );
+    public static Store lastOnClickStore1 = new Store ( 0, "city_1", "city_1b",
+            "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street",
+            "$10 per person", "Cafe");
+    public static Store lastOnClickStore2 = new Store ( 1,"grafton_2", "grafton_2b",
+            "grafton_2c","Poké House", "110 Grafton Rd Grafton",
+            "$20 per person", "Salad, Poké" );
 
-    public static Store lastOnClickStore3 = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland, Auckland 1010, New Zealand");
+    public static Store lastOnClickStore3 = new Store ( 2, "off_3", "off_3b",
+            "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland",
+            "$15 per person", "Dumplings, Chinese, Fusion");
     int mLayoutID;
     Context mContext;
 
@@ -64,36 +70,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //Currently compares store names which works for our data, in the future if there multiple stores with the same name this might be an issue
             if ((mStores.get(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore3.setDescription(lastOnClickStore3.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore3.getCost());
                 lastOnClickStore2 = lastOnClickStore2;
-                lastOnClickStore2.setDescription(lastOnClickStore2.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore1 = lastOnClickStore1;
-                lastOnClickStore1.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore1.setCost(lastOnClickStore1.getCost());
             }
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore3.setDescription(lastOnClickStore3.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore3.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
-                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
-                lastOnClickStore1.setCost(mStores.get(position).getCost());
+                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
+                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
+                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
+                        mStores.get(position).getCost(), mStores.get(position).getDescription());
             }
             else {
                 lastOnClickStore3 = lastOnClickStore2;
-                lastOnClickStore3.setDescription(lastOnClickStore2.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
-                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
-                lastOnClickStore1.setCost(mStores.get(position).getCost());
+                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
+                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
+                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
+                        mStores.get(position).getCost(), mStores.get(position).getDescription());
             }
         });
 
@@ -108,36 +102,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //Currently compares store names which works for our data, in the future if there multiple stores with the same name this might be an issue
             if ((mStores.get(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore3.setDescription(lastOnClickStore3.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore3.getCost());
                 lastOnClickStore2 = lastOnClickStore2;
-                lastOnClickStore2.setDescription(lastOnClickStore2.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore1 = lastOnClickStore1;
-                lastOnClickStore1.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore1.setCost(lastOnClickStore1.getCost());
             }
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore3.setDescription(lastOnClickStore3.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore3.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
-                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
-                lastOnClickStore1.setCost(mStores.get(position).getCost());
+                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
+                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
+                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
+                        mStores.get(position).getCost(), mStores.get(position).getDescription());
             }
             else {
                 lastOnClickStore3 = lastOnClickStore2;
-                lastOnClickStore3.setDescription(lastOnClickStore2.getDescription());
-                lastOnClickStore3.setCost(lastOnClickStore2.getCost());
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore2.setDescription(lastOnClickStore1.getDescription());
-                lastOnClickStore2.setCost(lastOnClickStore1.getCost());
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),mStores.get(position).getStoreName(),mStores.get(position).getLocation());
-                lastOnClickStore1.setDescription(mStores.get(position).getDescription());
-                lastOnClickStore1.setCost(mStores.get(position).getCost());
+                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
+                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
+                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
+                        mStores.get(position).getCost(),mStores.get(position).getDescription());
             }
         });
     }

@@ -17,13 +17,15 @@ public class Store implements Parcelable {
 
     private String cost;
 
-    public Store (int index,String image, String image_b, String image_c, String storeName, String location ){
+    public Store (int index,String image, String image_b, String image_c, String storeName, String location, String cost, String description ){
         this.index = index;
         this.image = image;
         this.image_b = image_b;
         this.image_c = image_c;
         this.storeName = storeName;
         this.location = location;
+        this.cost = cost;
+        this.description = description;
     }
     private Store(Parcel in) {
         index = in.readInt();
