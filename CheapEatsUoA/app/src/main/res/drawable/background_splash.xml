@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <item android:drawable="@color/white" />
-    <item
-        android:width="50dp"
-        android:height="50dp"
-        android:gravity="center">
+    >
+    <item android:drawable="@android:color/white" />
+    <item>
         <bitmap
-            android:src="@drawable/store_icon" />
+           android:gravity="center"
+            android:src="@drawable/cheap_eats_logo_text_below" />
     </item>
 </layer-list>
