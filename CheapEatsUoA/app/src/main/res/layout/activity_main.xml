@@ -101,6 +101,8 @@
             style="@style/CategoryCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#525253"
@@ -121,6 +123,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:backgroundTint="@color/light_teal"
             app:cardCornerRadius="4dp">
 
@@ -139,6 +143,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:backgroundTint="@color/light_green"
             app:cardCornerRadius="4dp">
 
