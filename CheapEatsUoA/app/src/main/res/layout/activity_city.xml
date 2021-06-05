@@ -17,53 +17,46 @@
        android:elevation="4dp">
    </androidx.appcompat.widget.Toolbar>
 
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+      <TextView
+          android:id="@+id/city_campus_heading_text"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="16dp"
+          android:paddingTop="3dp"
+          android:text="City Campus"
+          android:textAlignment="center"
+          android:textColor="#525253"
+          android:textSize="20sp"
+          android:textStyle="normal" />
+      <androidx.cardview.widget.CardView
+          android:id="@+id/city_campus_heading_card"
+          style="@style/CategoryCardStyle"
+          android:layout_width="match_parent"
+          android:layout_height="35dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginRight="16dp"
+          android:alpha="0.3"
+          app:cardBackgroundColor="#525253"
+          app:cardCornerRadius="8dp"
+          app:cardElevation="20dp">
+      </androidx.cardview.widget.CardView>
+   </FrameLayout>
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/city_recycler_view"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginBottom="16dp"
-       android:layout_marginTop="16dp"
        android:layout_marginLeft="16dp"
        android:layout_marginRight="16dp"
        android:scrollbars="vertical"/>
 
 </LinearLayout>
 
- <!--<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:tools="http://schemas.android.com/tools"
-     android:id="@+id/list_view_city"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:divider="@android:color/transparent"
-     android:dividerHeight="10sp"
-     android:padding="16dp"
-     tools:context=".CityActivity">
-
- </ListView>-->
-
- <!--       tools:context=".CityActivity"
-        android:numColumns="2"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:columnWidth="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">-->
-
- <!--<GridView
-     android:id="@+id/grid_view_city"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     tools:context=".CityActivity"
-     android:numColumns="2"
-     android:horizontalSpacing="10dp"
-     android:verticalSpacing="10dp"
-     android:columnWidth="10dp"
-     android:stretchMode="columnWidth"
-     android:gravity="center"
-     android:paddingLeft="10dp"
-     android:paddingRight="10dp">
-
- </GridView>-->
 
