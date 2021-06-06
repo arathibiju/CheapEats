@@ -28,6 +28,7 @@ This sample uses the Gradle build system. To build this project, use the
 Screenshots
 -------------
 Main Activity
+
 <img src="https://user-images.githubusercontent.com/62319771/120919225-8f247c00-c70c-11eb-9faf-712c1863e06b.png" height="500" alt="MainActivity"/> 
 City Category
 
