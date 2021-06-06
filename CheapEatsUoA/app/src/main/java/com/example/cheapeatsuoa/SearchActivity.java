@@ -107,7 +107,7 @@ public class SearchActivity extends AppCompatActivity {
             intent.putExtra("list", "search");
             startActivity(intent);
 
-            //updates recently visited stores//
+            //updates recently visited stores
             if (( adapter.getItem(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
 
             }
@@ -120,11 +120,12 @@ public class SearchActivity extends AppCompatActivity {
                 lastOnClickStore2 = lastOnClickStore1;
                 lastOnClickStore1 = makeNewSearchStore(position);
             }
+            //Slide animation to next activity
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 
-    // code for back button from search screen
+    //code for back button from search screen//
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -140,6 +141,7 @@ public class SearchActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
+    //Makes new store by unpacking the current store of type 'parcel' for recently visited stores//
     public Store makeNewSearchStore(int position){
         return new Store (adapter.getItem(position).getIndex(), adapter.getItem(position).getImage(),
                 adapter.getItem(position).getImage_b(),adapter.getItem(position).getImage_c(),

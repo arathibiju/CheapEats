@@ -152,16 +152,12 @@ public class StoreDetailActivity extends AppCompatActivity {
         });
 
     }
+
     /*The next two functions help us refresh the main activity when we return to it directly from
     detail view. For example if an item from the top picks panel was selected, then we use the back
     button to return to the main activity. We need to refresh the main activity so that the top picks
     panel will update */
-   /* @Override
-    public void onRestart() {
-        super.onRestart();
-        //When BACK BUTTON is pressed, the activity on the stack is restarted
-        //Do what you want on the refresh procedure here
-    }*/
+
     public void onBackPressed() {
         //check if we actually came from main activity, otherwise the back button from details activity
         // will take us directly back to main regardless of the previous activity

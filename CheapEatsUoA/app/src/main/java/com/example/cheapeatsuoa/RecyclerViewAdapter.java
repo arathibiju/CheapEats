@@ -36,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context mContext;
     String activity;
 
-
+    
     public RecyclerViewAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Store> objects, String activity) {
        super();
         mLayoutID = resource;
@@ -46,6 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
+//Uses recycler view when activity is created to display all stores
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,6 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+        //Goes through and displays the entire array list of stores for each activity
         Store currentStore = mStores.get(position);
         int i = mContext.getResources().getIdentifier(currentStore.getImage(), "drawable",
                 mContext.getPackageName());
@@ -66,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //Text onClick//
         holder.textView.setOnClickListener(myViewHolder -> {
+            //Sends store information to detail activity
             Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
             detailActivity.putExtra("FromActivity", mStores.get(position));
             detailActivity.putExtra("recycleView", activity);
@@ -89,8 +92,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //Image onClick//
         holder.imageView.setOnClickListener(myViewHolder -> {
+            //Sends store information to detail activity
             Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
-
             detailActivity.putExtra("FromActivity", mStores.get(position));
             detailActivity.putExtra("recycleView", activity);
             mContext.startActivity(detailActivity);
@@ -111,13 +114,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
     }
-
+//This function checks how many stores are in each activity
     @Override
     public int getItemCount() {
         return mStores.size();
     }
 
-
+//View holder displays image and text for each store//
     public class myViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
@@ -130,6 +133,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
+    //Makes new store by unpacking the current store of type 'parcel' for recently visited stores//
     public Store makeNewStore(int position){
         Store newStore = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
                 mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
