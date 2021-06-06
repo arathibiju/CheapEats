@@ -24,12 +24,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
     Intent receiveIntent = getIntent();
-    /*ArrayList<Store> recentStores = RecyclerViewAdapter.getRecentStores(this);*/
-    //ArrayList<Store> recentStores = DataProvider.addRecentStores(a);
     ArrayList<Store> recentStores = DataProvider.addRecentStores(RecyclerViewAdapter.lastOnClickStore1, RecyclerViewAdapter.lastOnClickStore2, RecyclerViewAdapter.lastOnClickStore3);
 
     class ViewHolder{
@@ -51,19 +48,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-/*    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        //super.recreate();
-        //ArrayList<Store> recentStores = DataProvider.addRecentStores(RecyclerViewAdapter.lastOnClickStore);
-        //When BACK BUTTON is pressed, the activity on the stack is restarted
-        //Do what you want on the refresh procedure here
-    }*/
-
-/*    @Override
-    public void onResume() {
-        this.recreate();
-    }*/
     ViewHolder vh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
                 cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
-/*                cityCampusIntent.putParcelableArrayListExtra("City", cityStores);*/
+/*               cityCampusIntent.putParcelableArrayListExtra("City", cityStores);*/
                 finish();
                 startActivity(getIntent());
                 startActivity(cityCampusIntent);

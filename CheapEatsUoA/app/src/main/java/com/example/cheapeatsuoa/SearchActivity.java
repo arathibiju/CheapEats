@@ -23,6 +23,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore1;
+import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore2;
+import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore3;
+
 public class SearchActivity extends AppCompatActivity {
 
     ListViewAdapter adapter;
@@ -111,10 +115,24 @@ public class SearchActivity extends AppCompatActivity {
         vh.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Launch the detail view passing book as an extra
+                // Launch the detail view passing store as an extra
                 Intent intent = new Intent(SearchActivity.this, StoreDetailActivity.class);
                 intent.putExtra("FromActivity", adapter.getItem(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
                 startActivity(intent);
+
+                //updates recently visited stores//
+                if (( adapter.getItem(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
+
+                }
+                else if ((adapter.getItem(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
+                    lastOnClickStore2 = lastOnClickStore1;
+                    lastOnClickStore1 = makeNewSearchStore(position);
+                }
+                else {
+                    lastOnClickStore3 = lastOnClickStore2;
+                    lastOnClickStore2 = lastOnClickStore1;
+                    lastOnClickStore1 = makeNewSearchStore(position);
+                }
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -132,5 +150,13 @@ public class SearchActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    public Store makeNewSearchStore(int position){
+        Store newStore = new Store (adapter.getItem(position).getIndex(), adapter.getItem(position).getImage(),
+                adapter.getItem(position).getImage_b(),adapter.getItem(position).getImage_c(),
+                adapter.getItem(position).getStoreName(),adapter.getItem(position).getLocation(),
+                adapter.getItem(position).getCost(),adapter.getItem(position).getDescription());
+        return newStore;
     }
 }

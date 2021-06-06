@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.myViewHolder> {
 
-    ArrayList<Store> mStores;
+    //Initialise recent stores//
     public static Store lastOnClickStore1 = new Store ( 0, "city_1", "city_1b",
             "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street",
             "$10 per person", "Cafe");
@@ -30,6 +30,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static Store lastOnClickStore3 = new Store ( 2, "off_3", "off_3b",
             "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland",
             "$15 per person", "Dumplings, Chinese, Fusion");
+
+    ArrayList<Store> mStores;
     int mLayoutID;
     Context mContext;
 
@@ -53,8 +55,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        Store currentNumber = mStores.get(position);
-        int i = mContext.getResources().getIdentifier(currentNumber.getImage(), "drawable",
+        Store currentStore = mStores.get(position);
+        int i = mContext.getResources().getIdentifier(currentStore.getImage(), "drawable",
                 mContext.getPackageName());
 
         holder.imageView.setImageResource(i);
@@ -69,12 +71,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //Checks if most recent store clicked is already part of 'Recent Views'//
             //Currently compares store names which works for our data, in the future if there multiple stores with the same name this might be an issue
             if ((mStores.get(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
-                lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore2 = lastOnClickStore2;
-                lastOnClickStore1 = lastOnClickStore1;
+
             }
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
-                lastOnClickStore3 = lastOnClickStore3;
                 lastOnClickStore2 = lastOnClickStore1;
                 lastOnClickStore1 = makeNewStore(position);
             }
@@ -95,12 +94,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             //Checks if most recent store clicked is already part of 'Recent Views'//
             //Currently compares store names which works for our data, in the future if there multiple stores with the same name this might be an issue
             if ((mStores.get(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
-                lastOnClickStore3 = lastOnClickStore3;
-                lastOnClickStore2 = lastOnClickStore2;
-                lastOnClickStore1 = lastOnClickStore1;
+
             }
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
-                lastOnClickStore3 = lastOnClickStore3;
                 lastOnClickStore2 = lastOnClickStore1;
                 lastOnClickStore1 = makeNewStore(position);
             }
@@ -128,7 +124,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             imageView=itemView.findViewById(R.id.imageView);
             textView =itemView.findViewById(R.id.textView);
         }
-
     }
 
     public Store makeNewStore(int position){
