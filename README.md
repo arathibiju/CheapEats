@@ -27,13 +27,17 @@ This sample uses the Gradle build system. To build this project, use the
 
 Screenshots
 -------------
-[Main Activity]<img src="https://user-images.githubusercontent.com/62319771/120919225-8f247c00-c70c-11eb-9faf-712c1863e06b.png" height="500" alt="MainActivity"/> 
+<img src="https://user-images.githubusercontent.com/62319771/120919225-8f247c00-c70c-11eb-9faf-712c1863e06b.png" height="500" alt="MainActivity"/> 
+Main Activity
 
-[City Category]<img src="https://user-images.githubusercontent.com/62319771/120919275-ce52cd00-c70c-11eb-8f11-a1123f6c508c.png" height="500" alt="Category"/> 
+<img src="https://user-images.githubusercontent.com/62319771/120919275-ce52cd00-c70c-11eb-8f11-a1123f6c508c.png" height="500" alt="Category"/> 
+City Category
 
-[Search Activity]<img src="https://user-images.githubusercontent.com/62319771/120919310-fd693e80-c70c-11eb-858d-a9165ac3f777.png" height="500" alt="SearchActivity"/> 
+<img src="https://user-images.githubusercontent.com/62319771/120919310-fd693e80-c70c-11eb-858d-a9165ac3f777.png" height="500" alt="SearchActivity"/> 
+Search Activity
 
-[Details Activity of a store, showing store details]<img src="https://user-images.githubusercontent.com/62319771/120919364-4c16d880-c70d-11eb-927a-fd8f912b853e.png" height="500" alt="DetailsActivity"/> 
+<img src="https://user-images.githubusercontent.com/62319771/120919364-4c16d880-c70d-11eb-927a-fd8f912b853e.png" height="500" alt="DetailsActivity"/> 
+Details Activity of a store, showing store details
 
 Acknowledgements
 -------------
