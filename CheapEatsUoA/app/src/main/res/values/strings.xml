@@ -6,4 +6,6 @@
     <string name="description">Description</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_holder_description">Store images such as location, menu and food</string>
+    <string name="loc_im_thumbnail">store location image thumbnail</string>
 </resources>

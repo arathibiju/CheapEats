@@ -3,6 +3,7 @@ package com.example.cheapeatsuoa.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+//Parcelable class Store model
 public class Store implements Parcelable {
 
     private int index;
@@ -10,13 +11,9 @@ public class Store implements Parcelable {
     private String location;
     private String storeName;
     private String description;
-
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
+    private String campus;
     private String cost;
-
+//contructor for store
     public Store (int index,String image, String image_b, String image_c, String storeName, String location, String cost, String description ){
         this.index = index;
         this.image = image;
@@ -27,6 +24,8 @@ public class Store implements Parcelable {
         this.cost = cost;
         this.description = description;
     }
+
+    //Read in store fields
     private Store(Parcel in) {
         index = in.readInt();
         location = in.readString();
@@ -69,6 +68,7 @@ public class Store implements Parcelable {
         dest.writeString(image_c);
     }
 
+    //getter and setter functions
     public int getIndex() {
         return index;
     }
@@ -93,25 +93,17 @@ public class Store implements Parcelable {
         return storeName;
     }
 
-
     public String getCost() {
         return cost;
     }
 
     public String getDescription() { return description; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-/*    public String getListImageFilename() {
-        return location;
+    public String getCampus() {
+        return campus;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public void setCampus(String campus) {
+        this.campus = campus;
     }
-
-
-    }*/
-
 }

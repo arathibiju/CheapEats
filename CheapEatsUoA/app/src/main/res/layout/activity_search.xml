@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:background="#e0e0e0"
                 android:paddingBottom="8dp"
+                android:paddingEnd="24dp"
                 android:queryHint="Search Stores"
                 android:iconifiedByDefault="false"/>
             <requestFocus />

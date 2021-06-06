@@ -5,24 +5,20 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+
 
 import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
 
 public class GraftonActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
     ArrayList<Store> graftonStores = DataProvider.getGraftonStores();
@@ -37,7 +33,7 @@ public class GraftonActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(GraftonActivity.this, R.color.dark_blue_primary_dark));
 
-        recyclerView = findViewById(R.id.grafton_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.grafton_recycler_view);
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             layoutManager =  new GridLayoutManager(this, 2);
         }
