@@ -54,7 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(SearchActivity.this, R.color.dark_blue_primary_dark));
-
+        //set custom toolbar
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
@@ -75,7 +75,7 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new ListViewAdapter(this, offCampus, grafton, city);
         vh.listView.setAdapter(adapter);
 
-
+        // When user types a search string or presses enter, search for that string and return results
         vh.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,7 +98,7 @@ public class SearchActivity extends AppCompatActivity {
 
         setupStoreSelectedListener();
     }
-
+    // If list view item is clicked go to the corresponding detail view and reset the top picks stores
     public void setupStoreSelectedListener() {
         vh.listView.setOnItemClickListener((parent, view, position, id) -> {
             // Launch the detail view passing store as an extra
@@ -124,6 +124,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    // code for back button from search screen
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
