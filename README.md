@@ -1,6 +1,7 @@
 # Cheap Eats UoA
-Developed by Shreya Singaraju and Arathi Biju
+### Developed by Shreya Singaraju and Arathi Biju
 ===================================
+
 
 This app is a fully responsive, interactable android app deveoped using Java and Android Studio. The app is designed for University of Auckland students, as a go-to resource for students to search for the best food and drinks located around the university campus. Stores from different areas such as city campus, grafton campus and off campus (cbd) are featured on the app with the recently visited category featured on the home page. We have attempted to comply with the android material design guidelines where possible.
 
