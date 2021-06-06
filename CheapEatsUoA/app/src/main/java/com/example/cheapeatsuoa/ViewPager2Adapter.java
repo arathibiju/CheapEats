@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +17,6 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     // Adding image_view from drawable folder
     private int[] images;
     private Context ctx;
-    private int position;
 
     // Constructor of our ViewPager2Adapter class
     ViewPager2Adapter(Context ctx, int [] images) {
@@ -40,7 +38,6 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // This will set the image_view in imageview
         holder.image_view.setImageResource(images[position]);
-        this.position = position;
 
     }
 

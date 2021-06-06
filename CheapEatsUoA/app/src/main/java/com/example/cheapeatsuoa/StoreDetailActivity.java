@@ -172,11 +172,8 @@ public class StoreDetailActivity extends AppCompatActivity {
               finish();
               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
           }
-          super.onBackPressed();
-      } else {
-          super.onBackPressed();
       }
-
+        super.onBackPressed();
 
 
     }

@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(SplashScreen.this, R.color.dark_blue_primary_dark));
 
-
+        // set time for splashscreen to show on screen
         new Handler().postDelayed(() -> {
             // This method will be executed once the timer is over
             Intent i = new Intent(SplashScreen.this, MainActivity.class);

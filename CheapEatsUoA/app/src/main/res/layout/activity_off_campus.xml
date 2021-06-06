@@ -10,7 +10,8 @@ tools:context=".OffCampusActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        app:logo="@drawable/logo"
+        app:logo="@drawable/logo1"
+        android:paddingEnd="18dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         style="@style/ToolbarTheme"
