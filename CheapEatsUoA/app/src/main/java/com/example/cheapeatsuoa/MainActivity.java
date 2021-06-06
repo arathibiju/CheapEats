@@ -19,6 +19,7 @@ import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
 /* README
 * The classes and their inheritance shown here are different to the class diagrams in the design docs.
 * More adapters were added, as at the time of making the class diagram, we were not that informed

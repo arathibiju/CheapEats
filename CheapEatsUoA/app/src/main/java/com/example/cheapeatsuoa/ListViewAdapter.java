@@ -23,6 +23,7 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<Store> storeList;
     private ArrayList<Store> arraylist;
 
+
     public ListViewAdapter(Context context, ArrayList<Store> storeList, ArrayList<Store> grafton, ArrayList<Store> city) {
         mContext = context;
         this.storeList = storeList;
@@ -54,9 +55,11 @@ public class ListViewAdapter extends BaseAdapter {
         return position;
     }
 
+    //get view method for list adapter
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
+        // if view does not exist, create new view
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_item, parent,false);
@@ -77,19 +80,21 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
+    //search stores by comparing strings in the search to the names of the stores and returns true
+    // if at least 1 store has been found.
     public boolean filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        storeList.clear();
+        storeList.clear();// clear list of stores
         if (charText.length() == 0) {
             storeList.clear();
-        } else {
+        } else { // if store match is found add store to list
             for (Store wp : arraylist) {
                 if (wp.getStoreName().toLowerCase(Locale.getDefault()).contains(charText)) {
                     storeList.add(wp);
                 }
             }
         }
-
+        // return value indicating if store list is empty is not
         notifyDataSetChanged();
         return storeList.size() != 0;
     }
