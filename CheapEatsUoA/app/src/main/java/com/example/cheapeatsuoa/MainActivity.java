@@ -1,5 +1,12 @@
 package com.example.cheapeatsuoa;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -7,28 +14,25 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-
 import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
-    Intent receiveIntent = getIntent();
     ArrayList<Store> recentStores = DataProvider.addRecentStores(RecyclerViewAdapter.lastOnClickStore1, RecyclerViewAdapter.lastOnClickStore2, RecyclerViewAdapter.lastOnClickStore3);
 
+    // Use data provider to create arraylists for each category.
+    ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
+    ArrayList<Store> graftonStores = DataProvider.getGraftonStores();
+    ArrayList<Store> cityStores = DataProvider.getCityStores();
+
+    // View Holder class to store views in the layout
     class ViewHolder{
         CardView cityCardView;
         CardView graftonCardView;
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         EditText searchEditText;
         ImageView searchIcon;
 
-
+        // populate views using the ID's for each view
         public ViewHolder() {
             cityCardView =  findViewById(R.id.card_view_city);
             graftonCardView =  findViewById(R.id.card_view_grafton);
@@ -55,126 +59,96 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        //set the status bar to a dark blue custom colour
         Window window = MainActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(MainActivity.this, R.color.dark_blue_primary_dark));
 
+        //Add custom toolbar with logo
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-
+        // Create the recyclerview object, set adapter, set grid layout
         RecyclerView recyclerView = findViewById(R.id.top_picks_recycler_view);
         layoutManager =  new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_main, recentStores);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_main, recentStores, "MainActivity");
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
 
+        // new instance of view holder
         vh = new ViewHolder();
 
-        vh.cityCardView.setOnClickListener(new View.OnClickListener(){
+        // Handle click events for each category card view
+        vh.cityCardView.setOnClickListener(v -> {
+            Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
+            cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
+            cityCampusIntent.putParcelableArrayListExtra("City", cityStores); // send the corresponding array list
+            finish();
+            startActivity(getIntent());
+            startActivity(cityCampusIntent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-            @Override
-            public void onClick(View v){
-                //Create a new arraylist to hold store objects
-                ArrayList<Store> cityStores = DataProvider.getCityStores(); // populate array list using data provider
-
-                Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
-                cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
-/*               cityCampusIntent.putParcelableArrayListExtra("City", cityStores);*/
-                finish();
-                startActivity(getIntent());
-                startActivity(cityCampusIntent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-            }
         });
 
-        vh.graftonCardView.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                ArrayList<Store> graftonStores = DataProvider.getGraftonStores(); // populate array list using data provider
-
-                Intent graftonCampusActivity = new Intent(getBaseContext(),GraftonActivity.class);
-                graftonCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                graftonCampusActivity.putParcelableArrayListExtra("Grafton" , graftonStores);
-                finish();
-                startActivity(getIntent());
-                startActivity(graftonCampusActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        vh.graftonCardView.setOnClickListener(v -> {
+            Intent graftonCampusActivity = new Intent(getBaseContext(),GraftonActivity.class);
+            graftonCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+            graftonCampusActivity.putParcelableArrayListExtra("Grafton" , graftonStores);
+            finish();
+            startActivity(getIntent());
+            startActivity(graftonCampusActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        vh.offCampusCardView.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
-                Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
-                offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
-                finish();
-                startActivity(getIntent());
-                startActivity(offCampusActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        vh.offCampusCardView.setOnClickListener(v -> {
+            Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
+            offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+            offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
+            finish();
+            startActivity(getIntent());
+            startActivity(offCampusActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        vh.searchDialog.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                ArrayList<Store> offCampusStores = DataProvider.getOffCampusStores();
-                ArrayList<Store> graftonStores = DataProvider.getGraftonStores();
-                ArrayList<Store> cityStores = DataProvider.getCityStores();
-                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
-                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
-                searchActivity.putParcelableArrayListExtra("city" , cityStores );
-                finish();
-                startActivity(getIntent());
-                startActivity(searchActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        vh.searchDialog.setOnClickListener(v -> {
+            Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+            searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+            searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+            searchActivity.putParcelableArrayListExtra("city" , cityStores );
+            finish();
+            startActivity(getIntent());
+            startActivity(searchActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
-        vh.searchEditText.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                ArrayList<Store> graftonStores = DataProvider.getOffCampusStores();
-                ArrayList<Store> cityStores = DataProvider.getCityStores();
-                ArrayList<Store> offCampusStores = DataProvider.getGraftonStores();
-                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
-                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
-                searchActivity.putParcelableArrayListExtra("city" , cityStores );
-                finish();
-                startActivity(getIntent());
-                startActivity(searchActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        vh.searchEditText.setOnClickListener(v -> {
+            Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+            searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+            searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+            searchActivity.putParcelableArrayListExtra("city" , cityStores );
+            finish();
+            startActivity(getIntent());
+            startActivity(searchActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
-        vh.searchIcon.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                ArrayList<Store> graftonStores = DataProvider.getOffCampusStores();
-                ArrayList<Store> cityStores = DataProvider.getCityStores();
-                ArrayList<Store> offCampusStores = DataProvider.getGraftonStores();
-                Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
-                searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
-                searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
-                searchActivity.putParcelableArrayListExtra("city" , cityStores );
-                finish();
-                startActivity(getIntent());
-                startActivity(searchActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        vh.searchIcon.setOnClickListener(v -> {
+            Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+            searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
+            searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
+            searchActivity.putParcelableArrayListExtra("city" , cityStores );
+            finish();
+            startActivity(getIntent());
+            startActivity(searchActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
     }
+
+
+
+
+
+
 }

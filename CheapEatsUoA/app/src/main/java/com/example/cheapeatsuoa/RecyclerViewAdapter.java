@@ -34,13 +34,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<Store> mStores;
     int mLayoutID;
     Context mContext;
+    String activity;
 
 
-    public RecyclerViewAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Store> objects) {
+    public RecyclerViewAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Store> objects, String activity) {
        super();
         mLayoutID = resource;
         mContext = context;
         mStores = objects;
+        this.activity = activity;
 
     }
 
@@ -66,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.textView.setOnClickListener(myViewHolder -> {
             Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
             detailActivity.putExtra("FromActivity", mStores.get(position));
+            detailActivity.putExtra("recycleView", activity);
             mContext.startActivity(detailActivity);
 
             //Checks if most recent store clicked is already part of 'Recent Views'//
@@ -88,7 +91,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.imageView.setOnClickListener(myViewHolder -> {
             Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
 
-            detailActivity.putExtra("FromActivity", mStores.get(position)); 
+            detailActivity.putExtra("FromActivity", mStores.get(position));
+            detailActivity.putExtra("recycleView", activity);
             mContext.startActivity(detailActivity);
 
             //Checks if most recent store clicked is already part of 'Recent Views'//

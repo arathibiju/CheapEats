@@ -32,6 +32,7 @@ public class OffCampusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_off_campus);
 
+        //set the status bar to a dark blue custom colour
         Window window = OffCampusActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -45,7 +46,7 @@ public class OffCampusActivity extends AppCompatActivity {
             layoutManager =  new GridLayoutManager(this, 4);
         }
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_off_campus, offCampusStores);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_off_campus, offCampusStores, "OffCampusActivity");
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
     }

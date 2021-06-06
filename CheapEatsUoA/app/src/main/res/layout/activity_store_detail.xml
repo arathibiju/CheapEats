@@ -36,22 +36,23 @@
 
                 <ImageView
                     android:id="@+id/image_slider_left_arrow"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/sharp_arrow_left" />
-                <androidx.viewpager2.widget.ViewPager2
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/view_pager">
-                </androidx.viewpager2.widget.ViewPager2>
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/view_pager">
+                    </androidx.viewpager2.widget.ViewPager2>
 
                 <ImageView
                     android:id="@+id/image_slider_right_arrow"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/arrow_right_24" />
             </LinearLayout>
@@ -178,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Monday - Friday: 7am - 4pm \n Saturday, Sunday &amp; Public Holidays: Closed "
+                android:text=" Monday - Friday: 7am - 4pm \n Saturday, Sunday &amp; Public Holidays: Closed "
                 android:layout_margin = "8dp"
                 android:textColor = "@color/black"
                 android:textSize = "16sp"

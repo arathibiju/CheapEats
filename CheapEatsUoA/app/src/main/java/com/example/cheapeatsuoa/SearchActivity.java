@@ -49,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        //set the status bar to a dark blue custom colour
         Window window = SearchActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -88,12 +89,9 @@ public class SearchActivity extends AppCompatActivity {
                 boolean flag = adapter.filter(s);
                 if (!flag){
                     vh.results.setText("No Results Found");
-
-
                 } else{
                     vh.results.setText("");
                 }
-
                 return false;
             }
         });
@@ -105,7 +103,8 @@ public class SearchActivity extends AppCompatActivity {
         vh.listView.setOnItemClickListener((parent, view, position, id) -> {
             // Launch the detail view passing store as an extra
             Intent intent = new Intent(SearchActivity.this, StoreDetailActivity.class);
-            intent.putExtra("FromActivity", adapter.getItem(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+            intent.putExtra("FromActivity", adapter.getItem(position));
+            intent.putExtra("list", "search");
             startActivity(intent);
 
             //updates recently visited stores//
@@ -124,6 +123,7 @@ public class SearchActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

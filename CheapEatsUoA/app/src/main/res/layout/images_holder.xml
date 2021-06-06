@@ -6,10 +6,7 @@
     android:orientation="vertical"
     android:id="@+id/content">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp">
+
         <ImageView
             android:id="@+id/images"
             android:scaleType="centerInside"
@@ -17,6 +14,5 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/image_holder_description" />
 
-    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

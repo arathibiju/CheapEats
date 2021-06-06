@@ -28,6 +28,7 @@ public class GraftonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafton);
 
+        //set the status bar to a dark blue custom colour
         Window window = GraftonActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -41,7 +42,7 @@ public class GraftonActivity extends AppCompatActivity {
             layoutManager =  new GridLayoutManager(this, 4);
         }
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_grafton, graftonStores);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_grafton, graftonStores, "GraftonActivity");
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
     }

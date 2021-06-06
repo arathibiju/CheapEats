@@ -24,20 +24,19 @@ public class CityActivity extends AppCompatActivity{
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
 
-    Intent receiveIntent = getIntent();
-    //ArrayList<Store> cityStores = receiveIntent.getParcelableArrayListExtra("City");
-    ArrayList<Store> cityStores = DataProvider.getCityStores();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
 
-        //set
+        //set the status bar to a dark blue custom colour
         Window window = CityActivity.this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(CityActivity.this, R.color.dark_blue_primary_dark));
+
+        Intent receiveIntent = getIntent();
+        ArrayList<Store> cityStores = receiveIntent.getParcelableArrayListExtra("City");
 
         RecyclerView recyclerView = findViewById(R.id.city_recycler_view);
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
@@ -47,7 +46,7 @@ public class CityActivity extends AppCompatActivity{
             layoutManager =  new GridLayoutManager(this, 4);
         }
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_city, cityStores);
+        recyclerViewAdapter =  new RecyclerViewAdapter(this, R.layout.activity_city, cityStores, "CityActivity");
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
     }

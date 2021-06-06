@@ -67,7 +67,7 @@ public class Store implements Parcelable {
         dest.writeString(image_c);
     }
 
-    //getter and setter functions
+    //getter functions
     public int getIndex() {
         return index;
     }

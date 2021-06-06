@@ -9,6 +9,7 @@ import java.util.Map;
 public class DataProvider {
 
 
+    // Generate a hashmap of the store names and indexes of the stores in City category
     public static Map<Integer, String> generateCityStoreNames() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -24,7 +25,7 @@ public class DataProvider {
         stores.put(10, "ChiChop");
         return stores;
     }
-
+    // Generate a hashmap of the average costs and indexes of the stores in City category
     public static Map<Integer, String> generateCityStoreCost() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -40,6 +41,7 @@ public class DataProvider {
         stores.put(10, "$15 per person");
         return stores;
     }
+    // Generate a hashmap of the descriptions and indexes of the stores in City category
     public static Map<Integer, String> generateCityStoreDescription() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -55,6 +57,8 @@ public class DataProvider {
         stores.put(10, "Asian Takeaway");
         return stores;
     }
+
+    // Generate a hashmap of the addresses and indexes of the stores in City category
     public static Map<Integer, String> generateCityStoreLocations() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -71,6 +75,7 @@ public class DataProvider {
         return stores;
     }
 
+    // Generate a hashmap of the storenames and indexes of the stores in Grafton category
     public static Map<Integer, String> generateGraftonStoreNames() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -88,6 +93,7 @@ public class DataProvider {
 
     }
 
+    // Generate a hashmap of the average costs and indexes of the stores in Grafton category
     public static Map<Integer, String> generateGraftonStoreCost() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -104,6 +110,7 @@ public class DataProvider {
         return stores;
 
     }
+    // Generate a hashmap of the addresses and indexes of the stores in Grafton category
     public static Map<Integer, String> generateGraftonStoreLocations() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -120,6 +127,7 @@ public class DataProvider {
         return stores;
 
     }
+    // Generate a hashmap of the descriptions and indexes of the stores in Grafton category
     public static Map<Integer, String> generateGraftonStoreDescription() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -136,6 +144,8 @@ public class DataProvider {
         return stores;
 
     }
+
+    // Generate a hashmap of the storenames and indexes of the stores in Off Campus category
     public static Map<Integer, String> generateOffCampusStoreNames() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -151,6 +161,8 @@ public class DataProvider {
         stores.put(10,"Scarecrow");
         return stores;
     }
+
+    // Generate a hashmap of the store names and indexes of the stores in Off Campus category
     public static Map<Integer, String> generateOffCampusStoreCost() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -166,6 +178,7 @@ public class DataProvider {
         stores.put(10,"$15 per person");
         return stores;
     }
+    // Generate a hashmap of the addresses and indexes of the stores in Off Campus category
     public static Map<Integer, String> generateOffCampusStoreLocations() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -183,6 +196,7 @@ public class DataProvider {
 
     }
 
+    // Generate a hashmap of the descriptions and indexes of the stores in Off Campus category
     public static Map<Integer, String> generateOffCampusStoreDescription() {
         Map<Integer, String> stores =
                 new LinkedHashMap<>();
@@ -198,8 +212,9 @@ public class DataProvider {
         stores.put(10,"Cafe Food, Mediterranean");
         return stores;
     }
+    //return an arraylist of the stores in city category
     public static ArrayList<Store> getCityStores() {
-        ArrayList<Store> storeList = new ArrayList<Store>();
+        ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> storeNames = generateCityStoreNames();
         Map<Integer, String> storeLocations = generateCityStoreLocations();
         Map<Integer, String> storeDes = generateCityStoreDescription();
@@ -210,19 +225,17 @@ public class DataProvider {
             String location = storeLocations.get(key);
             String descriptions = storeDes.get(key);
             String cost = storeCost.get(key);
-            String image = "city_" + String.valueOf(key);
-            String image_b = "city_" + String.valueOf(key) + "b";
-            String image_c = "city_" + String.valueOf(key) + "c";
+            String image = "city_" + key;
+            String image_b = "city_" + key + "b";
+            String image_c = "city_" + key + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location,cost, descriptions );
-
-
             storeList.add(s);
         }
 
         return storeList;
     }
-
+    //return an arraylist of the stores in grafton category
     public static ArrayList<Store> getGraftonStores() {
         ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> stores = generateGraftonStoreNames();
@@ -236,9 +249,9 @@ public class DataProvider {
             String location = storeLocations.get(key);
             String cost = storeCost.get(key);
             String description = storeDes.get(key);
-            String image = "grafton_" + String.valueOf(key);
-            String image_b = "grafton_" + String.valueOf(key) + "b";
-            String image_c = "grafton_" + String.valueOf(key) + "c";
+            String image = "grafton_" + key;
+            String image_b = "grafton_" + key + "b";
+            String image_c = "grafton_" + key + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location, cost, description);
             storeList.add(s);
@@ -246,8 +259,9 @@ public class DataProvider {
 
         return storeList;
     }
+    //return an arraylist of the stores in off campus category
     public static ArrayList<Store> getOffCampusStores() {
-        ArrayList<Store> storeList = new ArrayList<Store>();
+        ArrayList<Store> storeList = new ArrayList<>();
         Map<Integer, String> stores = generateOffCampusStoreNames();
         Map<Integer, String> storeLocations = generateOffCampusStoreLocations();
         Map<Integer, String> storeDes = generateOffCampusStoreDescription();
@@ -258,9 +272,9 @@ public class DataProvider {
             String location = storeLocations.get(key);
             String cost = storeCost.get(key);
             String description = storeDes.get(key);
-            String image = "off_" + String.valueOf(key);
-            String image_b = "off_" + String.valueOf(key) + "b";
-            String image_c = "off_" + String.valueOf(key) + "c";
+            String image = "off_" + key;
+            String image_b = "off_" + key + "b";
+            String image_c = "off_" + key + "c";
 
             Store s = new Store ( index, image, image_b, image_c, name, location, cost,description );
             storeList.add(s);
@@ -270,7 +284,7 @@ public class DataProvider {
     }
 
     public static ArrayList<Store> addRecentStores(Store recent1, Store recent2, Store recent3) {
-        ArrayList<Store> storeList = new ArrayList<Store>(3);
+        ArrayList<Store> storeList = new ArrayList<>(3);
         storeList.add(recent1);
         storeList.add(recent2);
         storeList.add(recent3);
@@ -278,17 +292,5 @@ public class DataProvider {
         return storeList;
     }
 
-/*    public static ArrayList<Store> getRecentStores() {
-        ArrayList<Store> storeList = new ArrayList<Store>();
-*//*      Store a = new Store ( 0, "city_1", "city_1b", "city_1c", "Mojo", "HSB Courtyard, Auckland University, 10 Symonds Street");
-        storeList.add(a);
-        Store b = new Store ( 1,"grafton_2", "grafton_2b", "grafton_2c","Poke House", "110 Grafton Rd Grafton" );
-        storeList.add(b);
-        Store c = new Store ( 2, "off_3", "off_3b", "off_3c", "Sumthin Dumplin", "18-26 Wellesley Street E, Auckland, Auckland 1010, New Zealand");
-        storeList.add(c);
-        storeList.add(recent);*//*
-        //Store recent = addRecentStores();
-        return storeList;
-    }*/
 
 }
