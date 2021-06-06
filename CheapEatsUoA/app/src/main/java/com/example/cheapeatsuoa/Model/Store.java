@@ -11,7 +11,6 @@ public class Store implements Parcelable {
     private String location;
     private String storeName;
     private String description;
-    private String campus;
     private String cost;
 //contructor for store
     public Store (int index,String image, String image_b, String image_c, String storeName, String location, String cost, String description ){
@@ -98,12 +97,4 @@ public class Store implements Parcelable {
     }
 
     public String getDescription() { return description; }
-
-    public String getCampus() {
-        return campus;
-    }
-
-    public void setCampus(String campus) {
-        this.campus = campus;
-    }
 }

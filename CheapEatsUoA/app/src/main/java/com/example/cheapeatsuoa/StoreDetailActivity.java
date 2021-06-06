@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class StoreDetailActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         TextView description;
         TextView cost;
         ViewPager2 viewPager2;
+        TextView campusText;
         public ViewHolder(){
             imageCount = findViewById(R.id.image_count);
             viewPager2 = findViewById(R.id.view_pager);
@@ -33,6 +36,7 @@ public class StoreDetailActivity extends AppCompatActivity {
             storeLocation = findViewById(R.id.detail_store_location);
             description = findViewById(R.id.general_food_type);
             cost = findViewById(R.id.detail_store_cost);
+            campusText = findViewById(R.id.general_location);
         }
     }
     protected int[] currentImagesSet(Store currentStore){
@@ -72,6 +76,16 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         vh.description.setText(detailActivityStore.getDescription());
         vh.cost.setText(detailActivityStore.getCost());
+
+        String campus = detailActivityStore.getImage();
+
+        if(campus.contains("city")){
+            vh.campusText.setText("City Campus");
+        } else if (campus.contains("grafton")){
+            vh.campusText.setText("Grafton Campus");
+        } else{
+            vh.campusText.setText("Off Campus");
+        }
 
         // Object of ViewPager2Adapter that passes the context to the constructor of
         // ViewPager2Adapter

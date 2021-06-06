@@ -9,19 +9,16 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.cheapeatsuoa.Model.Store;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore1;
 import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore2;
@@ -59,7 +56,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -82,13 +79,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 boolean flag = adapter.filter(query);
-               /* if (!flag){
-                    Snackbar.make(findViewById(R.id.CoordinatorLayout), "No Results Found",
-                            Snackbar.LENGTH_LONG)
-                            .show();
-
-
-                }*/
                 return false;
             }
 
@@ -112,29 +102,26 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void setupStoreSelectedListener() {
-        vh.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Launch the detail view passing store as an extra
-                Intent intent = new Intent(SearchActivity.this, StoreDetailActivity.class);
-                intent.putExtra("FromActivity", adapter.getItem(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
-                startActivity(intent);
+        vh.listView.setOnItemClickListener((parent, view, position, id) -> {
+            // Launch the detail view passing store as an extra
+            Intent intent = new Intent(SearchActivity.this, StoreDetailActivity.class);
+            intent.putExtra("FromActivity", adapter.getItem(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+            startActivity(intent);
 
-                //updates recently visited stores//
-                if (( adapter.getItem(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
+            //updates recently visited stores//
+            if (( adapter.getItem(position).getStoreName()).equals(lastOnClickStore1.getStoreName())){
 
-                }
-                else if ((adapter.getItem(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
-                    lastOnClickStore2 = lastOnClickStore1;
-                    lastOnClickStore1 = makeNewSearchStore(position);
-                }
-                else {
-                    lastOnClickStore3 = lastOnClickStore2;
-                    lastOnClickStore2 = lastOnClickStore1;
-                    lastOnClickStore1 = makeNewSearchStore(position);
-                }
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
+            else if ((adapter.getItem(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
+                lastOnClickStore2 = lastOnClickStore1;
+                lastOnClickStore1 = makeNewSearchStore(position);
+            }
+            else {
+                lastOnClickStore3 = lastOnClickStore2;
+                lastOnClickStore2 = lastOnClickStore1;
+                lastOnClickStore1 = makeNewSearchStore(position);
+            }
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
     @Override
@@ -153,10 +140,9 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public Store makeNewSearchStore(int position){
-        Store newStore = new Store (adapter.getItem(position).getIndex(), adapter.getItem(position).getImage(),
+        return new Store (adapter.getItem(position).getIndex(), adapter.getItem(position).getImage(),
                 adapter.getItem(position).getImage_b(),adapter.getItem(position).getImage_c(),
                 adapter.getItem(position).getStoreName(),adapter.getItem(position).getLocation(),
                 adapter.getItem(position).getCost(),adapter.getItem(position).getDescription());
-        return newStore;
     }
 }

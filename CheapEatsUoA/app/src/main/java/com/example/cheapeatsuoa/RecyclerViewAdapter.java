@@ -88,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.imageView.setOnClickListener(myViewHolder -> {
             Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
 
-            detailActivity.putExtra("FromActivity", mStores.get(position)); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
+            detailActivity.putExtra("FromActivity", mStores.get(position)); 
             mContext.startActivity(detailActivity);
 
             //Checks if most recent store clicked is already part of 'Recent Views'//
