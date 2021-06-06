@@ -19,6 +19,12 @@ import com.example.cheapeatsuoa.Model.Store;
 
 import java.util.ArrayList;
 import java.util.Objects;
+/* README
+* The classes and their inheritance shown here are different to the class diagrams in the design docs.
+* More adapters were added, as at the time of making the class diagram, we were not that informed
+* on the use of adapters. Other changes are related to the usage of the data provider class.
+* The class diagram states that the classes would access data provider as necessary but to save
+* memory we decided to pass the Store model class details as a parcelable object using intents. */
 
 
 public class MainActivity extends AppCompatActivity {
