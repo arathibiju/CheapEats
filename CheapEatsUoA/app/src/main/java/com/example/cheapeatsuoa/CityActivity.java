@@ -73,13 +73,6 @@ public class CityActivity extends AppCompatActivity{
     }}
 
 
-/*    int[] arr = {R.drawable.city_1, R.drawable.city_2,
-            R.drawable.city_3, R.drawable.city_4,
-            R.drawable.city_5, R.drawable.city_6,
-            R.drawable.city_7, R.drawable.city_8,
-            R.drawable.city_9, R.drawable.city_10};*/
-
-
 
 
 

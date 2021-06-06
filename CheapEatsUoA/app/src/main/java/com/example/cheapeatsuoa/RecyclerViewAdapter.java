@@ -76,18 +76,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
-                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
-                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
-                        mStores.get(position).getCost(), mStores.get(position).getDescription());
+                lastOnClickStore1 = makeNewStore(position);
             }
             else {
                 lastOnClickStore3 = lastOnClickStore2;
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
-                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
-                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
-                        mStores.get(position).getCost(), mStores.get(position).getDescription());
+                lastOnClickStore1 = makeNewStore(position);
             }
         });
 
@@ -108,18 +102,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             else if ((mStores.get(position).getStoreName()).equals(lastOnClickStore2.getStoreName())){
                 lastOnClickStore3 = lastOnClickStore3;
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
-                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
-                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
-                        mStores.get(position).getCost(), mStores.get(position).getDescription());
+                lastOnClickStore1 = makeNewStore(position);
             }
             else {
                 lastOnClickStore3 = lastOnClickStore2;
                 lastOnClickStore2 = lastOnClickStore1;
-                lastOnClickStore1 = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
-                        mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
-                        mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
-                        mStores.get(position).getCost(),mStores.get(position).getDescription());
+                lastOnClickStore1 = makeNewStore(position);
             }
         });
     }
@@ -142,5 +130,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
     }
+
+    public Store makeNewStore(int position){
+        Store newStore = new Store (mStores.get(position).getIndex(), mStores.get(position).getImage(),
+                mStores.get(position).getImage_b(),mStores.get(position).getImage_c(),
+                mStores.get(position).getStoreName(),mStores.get(position).getLocation(),
+                mStores.get(position).getCost(), mStores.get(position).getDescription());
+        return newStore;
+    }
 }
+
+
 
