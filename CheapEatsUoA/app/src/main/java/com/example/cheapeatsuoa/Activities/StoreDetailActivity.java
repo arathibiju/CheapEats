@@ -1,24 +1,41 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Activities;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import android.view.Window;
-import android.view.WindowManager;
-
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.example.cheapeatsuoa.Adapters.ViewPager2Adapter;
+import com.example.cheapeatsuoa.Fragments.CustomMapFragment;
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PointOfInterest;
+
 import java.util.Objects;
 
-public class StoreDetailActivity extends AppCompatActivity {
+public class StoreDetailActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnPoiClickListener {
 
     String activity;
+
+
 
     class ViewHolder{
         //View holder class to store views used in layout
@@ -31,6 +48,8 @@ public class StoreDetailActivity extends AppCompatActivity {
         TextView campusText;
         ImageView leftArrow;
         ImageView rightArrow;
+        ImageView mapIcon;
+
         public ViewHolder(){
             //instantiate views
             imageCount = findViewById(R.id.image_count);
@@ -42,6 +61,7 @@ public class StoreDetailActivity extends AppCompatActivity {
             campusText = findViewById(R.id.general_location);
             leftArrow = findViewById(R.id.image_slider_left_arrow);
             rightArrow = findViewById(R.id.image_slider_right_arrow);
+            mapIcon = findViewById(R.id.location_icon);
         }
     }
 
@@ -75,6 +95,23 @@ public class StoreDetailActivity extends AppCompatActivity {
         Toolbar toolBar = findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+
+        // Get a handle to the fragment and register the callback.
+        SupportMapFragment mapFragment = (CustomMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
+
+        DisplayMetrics dm = this.getResources().getDisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int height = dm.heightPixels;
+        ViewGroup.LayoutParams params = null;
+        if (mapFragment != null) {
+            params = mapFragment.requireView().getLayoutParams();
+        }
+        Objects.requireNonNull(params).height = height/3;
+        mapFragment.requireView().setLayoutParams(params);
 
         // create new view holder instance
         vh = new StoreDetailActivity.ViewHolder();
@@ -150,6 +187,42 @@ public class StoreDetailActivity extends AppCompatActivity {
                 vh.viewPager2.setCurrentItem(vh.viewPager2.getCurrentItem() + 1, true);
             }
         });
+
+        vh.mapIcon.setOnClickListener(v -> {
+        //https://www.google.com/maps/search/?api=1&query=Munchy+mart+Symonds+Street%2C+Auckland+CBD%2C+Auckland
+            // geo:0,0?q=
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q=Munchy+mart+Symonds+Street%2C+Auckland+CBD%2C+Auckland");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+
+        });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+        ScrollView ScrollView = findViewById(R.id.content); //parent scrollview in xml, give your scrollview id value
+        ((CustomMapFragment) Objects.requireNonNull(getSupportFragmentManager().findFragmentById(R.id.map)))
+                .setListener(() -> ScrollView.requestDisallowInterceptTouchEvent(true));
+        LatLng sydney = new LatLng(-36.852134, 174.768336);
+
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Munchy Mart"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+
+    }
+
+
+    @Override
+    public void onPoiClick(PointOfInterest poi) {
+        Toast.makeText(this, "Clicked: " +
+                        poi.name + "\nPlace ID:" + poi.placeId +
+                        "\nLatitude:" + poi.latLng.latitude +
+                        " Longitude:" + poi.latLng.longitude,
+                Toast.LENGTH_SHORT).show();
 
     }
 

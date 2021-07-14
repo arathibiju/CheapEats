@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,14 +15,16 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.cheapeatsuoa.Adapters.ListViewAdapter;
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore1;
-import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore2;
-import static com.example.cheapeatsuoa.RecyclerViewAdapter.lastOnClickStore3;
+import static com.example.cheapeatsuoa.Adapters.RecyclerViewAdapter.lastOnClickStore1;
+import static com.example.cheapeatsuoa.Adapters.RecyclerViewAdapter.lastOnClickStore2;
+import static com.example.cheapeatsuoa.Adapters.RecyclerViewAdapter.lastOnClickStore3;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -69,7 +71,6 @@ public class SearchActivity extends AppCompatActivity {
         offCampus =  intent.getParcelableArrayListExtra("offcampus");
         grafton =  intent.getParcelableArrayListExtra("grafton");
         city =  intent.getParcelableArrayListExtra("city");
-
 
         // Pass results to ListViewAdapter Class
         adapter = new ListViewAdapter(this, offCampus, grafton, city);

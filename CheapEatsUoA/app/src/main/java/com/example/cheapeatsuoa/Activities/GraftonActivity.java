@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -12,8 +12,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
+import com.example.cheapeatsuoa.Adapters.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 

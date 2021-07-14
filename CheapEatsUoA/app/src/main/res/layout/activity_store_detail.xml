@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StoreDetailActivity">
+    tools:context=".Activities.StoreDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -40,7 +40,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/sharp_arrow_left" />
+                    android:src="@drawable/sharp_arrow_left"
+                    android:contentDescription="@string/left_arrow" />
 
                     <androidx.viewpager2.widget.ViewPager2
                         android:layout_width="0dp"
@@ -55,7 +56,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/arrow_right_24" />
+                    android:src="@drawable/arrow_right_24"
+                    android:contentDescription="@string/right_arrow" />
             </LinearLayout>
 
         <TextView
@@ -125,6 +127,8 @@
         </androidx.cardview.widget.CardView>
 <LinearLayout
     android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_marginTop="8dp">
@@ -138,7 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="10 Symonds St, Auckland, 1010"
+        android:text="@string/address"
         android:layout_margin = "8dp"
         android:textColor = "@color/black"
         android:textSize = "16sp"
@@ -159,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="$10 per person"
+                android:text="@string/cost"
                 android:layout_margin = "8dp"
                 android:textColor = "@color/black"
                 android:textSize = "16sp"
@@ -180,12 +184,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text=" Monday - Friday: 7am - 4pm \n Saturday, Sunday &amp; Public Holidays: Closed "
+                android:text="@string/opening_hours"
                 android:layout_margin = "8dp"
                 android:textColor = "@color/black"
                 android:textSize = "16sp"
                 />
         </LinearLayout>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            android:name="com.example.cheapeatsuoa.Fragments.CustomMapFragment"
+            app:uiZoomControls="true"
+            app:uiRotateGestures="true"
+            app:uiScrollGestures="true"
+            app:uiZoomGestures="true"/>
     </LinearLayout>
 
 </ScrollView>

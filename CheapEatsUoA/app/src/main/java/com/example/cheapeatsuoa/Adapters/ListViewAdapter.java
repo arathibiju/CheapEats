@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
 
 import java.util.ArrayList;
 import java.util.Locale;

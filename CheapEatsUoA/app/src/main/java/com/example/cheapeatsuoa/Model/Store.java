@@ -12,7 +12,7 @@ public class Store implements Parcelable {
     private String storeName;
     private String description;
     private String cost;
-//contructor for store
+//constructor for store
     public Store (int index,String image, String image_b, String image_c, String storeName, String location, String cost, String description ){
         this.index = index;
         this.image = image;

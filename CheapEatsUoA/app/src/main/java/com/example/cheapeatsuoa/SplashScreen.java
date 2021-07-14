@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.cheapeatsuoa.Activities.MainActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override

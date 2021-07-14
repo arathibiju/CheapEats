@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cheapeatsuoa.Data.DataProvider;
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
+import com.example.cheapeatsuoa.Adapters.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Handle click events for each category card view
         vh.cityCardView.setOnClickListener(v -> {
-            Intent cityCampusIntent = new Intent(getBaseContext(),CityActivity.class);
+            Intent cityCampusIntent = new Intent(getBaseContext(), CityActivity.class);
             cityCampusIntent.putExtra("FromMainActivity", "I'm from the MainActivity");
             cityCampusIntent.putParcelableArrayListExtra("City", cityStores); // send the corresponding array list
             finish();
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         vh.graftonCardView.setOnClickListener(v -> {
-            Intent graftonCampusActivity = new Intent(getBaseContext(),GraftonActivity.class);
+            Intent graftonCampusActivity = new Intent(getBaseContext(), GraftonActivity.class);
             graftonCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
             graftonCampusActivity.putParcelableArrayListExtra("Grafton" , graftonStores);
             finish();
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         vh.offCampusCardView.setOnClickListener(v -> {
-            Intent offCampusActivity = new Intent(getBaseContext(),OffCampusActivity.class);
+            Intent offCampusActivity = new Intent(getBaseContext(), OffCampusActivity.class);
             offCampusActivity.putExtra("FromMainActivity", "I'm from the MainActivity"); // sending object is more proffessional way byt then we need to add more code t change class to serializable or parseable
             offCampusActivity.putParcelableArrayListExtra("Off" , offCampusStores );
             finish();
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         vh.searchDialog.setOnClickListener(v -> {
-            Intent searchActivity = new Intent(getBaseContext(),SearchActivity.class);
+            Intent searchActivity = new Intent(getBaseContext(), SearchActivity.class);
             searchActivity.putParcelableArrayListExtra("offcampus" , offCampusStores );
             searchActivity.putParcelableArrayListExtra("grafton" , graftonStores );
             searchActivity.putParcelableArrayListExtra("city" , cityStores );

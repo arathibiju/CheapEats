@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Adapters;
 
 
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cheapeatsuoa.R;
+
 
 public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.ViewHolder>{
 
@@ -19,7 +21,7 @@ public class ViewPager2Adapter extends RecyclerView.Adapter<ViewPager2Adapter.Vi
     private Context ctx;
 
     // Constructor of our ViewPager2Adapter class
-    ViewPager2Adapter(Context ctx, int [] images) {
+    public ViewPager2Adapter(Context ctx, int[] images) {
 
         this.ctx = ctx;
         this.images = images;

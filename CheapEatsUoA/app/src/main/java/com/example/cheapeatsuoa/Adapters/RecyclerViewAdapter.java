@@ -1,4 +1,4 @@
-package com.example.cheapeatsuoa;
+package com.example.cheapeatsuoa.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cheapeatsuoa.Activities.StoreDetailActivity;
 import com.example.cheapeatsuoa.Model.Store;
+import com.example.cheapeatsuoa.R;
 
 import java.util.ArrayList;
 
@@ -69,7 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //Text onClick//
         holder.textView.setOnClickListener(myViewHolder -> {
             //Sends store information to detail activity
-            Intent detailActivity = new Intent(mContext,StoreDetailActivity.class);
+            Intent detailActivity = new Intent(mContext, StoreDetailActivity.class);
             detailActivity.putExtra("FromActivity", mStores.get(position));
             detailActivity.putExtra("recycleView", activity);
             mContext.startActivity(detailActivity);
