@@ -67,7 +67,7 @@ public class DataProvider {
         stores.put(3, "Kate Edger Information Commons, 11 Symonds St"); // needo
         stores.put(4, "Kate Edger Information Commons, 11 Symonds St");// taco
         stores.put(5, "Kate Edger Information Commons, 11 Symonds St");//munchy
-        stores.put(6, "8 Alfred St (next to AUSA)"); //shadows
+        stores.put(6, "Shadows Alfred Street, Auckland CBD, Auckland"); //shadows
         stores.put(7, "Arts Quad: 10 Symonds St"); //ha poke
         stores.put(8, "Student Quad, 34 Princes St");// hollywood
         stores.put(9, "Student Quad, 34 Princes St");// jewel of india
