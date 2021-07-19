@@ -3,10 +3,13 @@ package com.example.cheapeatsuoa.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ import com.example.cheapeatsuoa.Adapters.ViewPager2Adapter;
 import com.example.cheapeatsuoa.Fragments.CustomMapFragment;
 import com.example.cheapeatsuoa.Model.Store;
 import com.example.cheapeatsuoa.R;
+import com.example.cheapeatsuoa.SplashScreen;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,14 +32,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.Objects;
 
 public class StoreDetailActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnPoiClickListener {
 
     String activity;
-
-
 
     class ViewHolder{
         //View holder class to store views used in layout
@@ -49,6 +52,8 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
         ImageView leftArrow;
         ImageView rightArrow;
         ImageView mapIcon;
+        Button mapButton;
+        ScrollView scrollView;
 
         public ViewHolder(){
             //instantiate views
@@ -62,6 +67,8 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
             leftArrow = findViewById(R.id.image_slider_left_arrow);
             rightArrow = findViewById(R.id.image_slider_right_arrow);
             mapIcon = findViewById(R.id.location_icon);
+            mapButton = findViewById(R.id.mapButton);
+            scrollView = findViewById(R.id.content);
         }
     }
 
@@ -96,12 +103,17 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
         setSupportActionBar(toolBar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
+        // create new view holder instance
+        vh = new StoreDetailActivity.ViewHolder();
+
         // Get a handle to the fragment and register the callback.
         SupportMapFragment mapFragment = (CustomMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
+            mapFragment.requireView().setVisibility(View.GONE);
         }
+
 
         DisplayMetrics dm = this.getResources().getDisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -113,15 +125,11 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
         Objects.requireNonNull(params).height = height/3;
         mapFragment.requireView().setLayoutParams(params);
 
-        // create new view holder instance
-        vh = new StoreDetailActivity.ViewHolder();
-
         // Receive intent from previous activity that contains store model that was clicked on as well as
         // the name of previous activity
         Intent receiveIntent = getIntent();
         Store detailActivityStore = receiveIntent.getParcelableExtra("FromActivity");
         activity = receiveIntent.getExtras().getString("recycleView");
-
 
         //set the text views in the details activity
         vh.storeLocation.setText(detailActivityStore.getLocation());
@@ -188,7 +196,23 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
             }
         });
 
-        vh.mapIcon.setOnClickListener(v -> {
+        // Enable map on button click
+        vh.mapButton.setOnClickListener(v -> {
+
+            if (!mapFragment.isVisible()) {
+                mapFragment.requireView().setVisibility(View.VISIBLE);
+                new Handler().postDelayed(() -> {
+                    // This method will be executed once the timer is over
+                    vh.scrollView.fullScroll(View.FOCUS_DOWN);
+                }, 500);
+            } else {
+                mapFragment.requireView().setVisibility(View.GONE);
+            }
+
+
+        });
+
+        /*vh.mapIcon.setOnClickListener(v -> {
         //https://www.google.com/maps/search/?api=1&query=Munchy+mart+Symonds+Street%2C+Auckland+CBD%2C+Auckland
             // geo:0,0?q=
             Uri gmmIntentUri = Uri.parse("geo:0,0?q=Munchy+mart+Symonds+Street%2C+Auckland+CBD%2C+Auckland");
@@ -196,7 +220,7 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
             mapIntent.setPackage("com.google.android.apps.maps");
             startActivity(mapIntent);
 
-        });
+        });*/
     }
 
     @Override
@@ -234,6 +258,7 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
     public void onBackPressed() {
         //check if we actually came from main activity, otherwise the back button from details activity
         // will take us directly back to main regardless of the previous activity
+
       if (activity!= null){
           if (activity.contains("Main")){
               Intent intent = new Intent(this, MainActivity.class);
@@ -243,7 +268,6 @@ public class StoreDetailActivity extends AppCompatActivity implements OnMapReady
           }
       }
         super.onBackPressed();
-
 
     }
 
